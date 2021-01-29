@@ -54,10 +54,6 @@ public abstract class Pilot {
         return concentration.getConcentrationName();
     }
 
-    public double getConcentrationValue(){
-        return concentration.getConcentrationValue();
-    }
-
     public void setConcentration(Concentration concentration) {
         this.concentration = concentration;
     }
