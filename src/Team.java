@@ -171,4 +171,39 @@ public class Team {
         }
         return builder.toString ();
     }
+
+    public void sendPilotsToRace () {
+        Pilot p;
+        Carable c;
+        boolean carSet = false;
+        boolean filled = false;
+        int counter = 0;
+        Iterator <Pilot> pilotIterator = getPilotList ().iterator ();
+        Iterator <Carable> carIterator = getCarList ().iterator ();
+
+        while (pilotIterator.hasNext () && (!filled)) {
+            p = pilotIterator.next ();
+            if (!p.isDisqualified()) {
+                while ((carIterator.hasNext ()) && (!carSet)) {
+                    c = carIterator.next ();
+                    if (c.getCurrentFuel () > 0) {
+                        p.setCar (c);
+                        carSet = true;
+                    }
+                }
+                if (Organization.getInstance ().getPilotsLimit() > counter) {
+                    Organization.getInstance().getRacingPilots().add(p);
+                    carSet = false;
+                    counter++;
+                }
+                if (counter >= Organization.getInstance().getPilotsLimit()) {
+                    filled = true;
+                }
+                if(p.getCar()==null){
+                    System.out.println("¡¡¡ "+p.getName()+" is not sent to the race because his team("+
+                            getName()+") does not have more cars with available fuel !!!");
+                }
+            }
+        }
+    }
 }

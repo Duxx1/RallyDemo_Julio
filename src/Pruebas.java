@@ -25,15 +25,43 @@ public class Pruebas {
     //        piloto_coche_r.setCar(coche_resistente);
     //        piloto_coche_r.drive(circuito_cocheResistente);
 
-              Team peugeot = new Team("Peugeot");
-              Pilot pilot=new StarPilot("McRae",Concentration.FOCUSED);
-              peugeot.getPilotList().add(pilot);
-              Pilot lleivi=new StarPilot("Lleivi",Concentration.CLUELESS);
+            Organization org=Organization.getInstance();
+            org.setLeftLimit(1);
+            org.setPilotsLimit(2);
+            Team peugeot = new Team("Peugeot");
+            Pilot pilot=new StarPilot("McRae",Concentration.FOCUSED);
+            peugeot.getPilotList().add(pilot);
+            Pilot lleivi=new StarPilot("Lleivi",Concentration.CLUELESS);
             peugeot.getPilotList().add(lleivi);
             Carable car = new FastCar("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS);
+            car.setCurrentFuel(0.0);
             peugeot.getCarList().add(car);
             Carable lleivimovil = new DurableCar("Lleivimovil", CarSpeed.TURTLE, CarFuel.LIMITED);
+            lleivimovil.setCurrentFuel(0.0);
             peugeot.getCarList().add(lleivimovil);
-            System.out.println(peugeot.toString());
+
+            Team seat = new Team("Seat");
+            Pilot p1=new StarPilot("Juan",Concentration.FOCUSED);
+            seat.getPilotList().add(p1);
+            Pilot p2=new StarPilot("Encarna",Concentration.CLUELESS);
+            seat.getPilotList().add(p2);
+            Carable car1 = new FastCar("Seat Cordoba", CarSpeed.CHEETAH, CarFuel.GENEROUS);
+            car1.setCurrentFuel(0.0);
+            seat.getCarList().add(car1);
+            Carable car2 = new DurableCar("Seat Arona", CarSpeed.TURTLE, CarFuel.LIMITED);
+            car2.setCurrentFuel(0.0);
+            seat.getCarList().add(car2);
+
+            peugeot.register();
+            seat.register();
+
+            peugeot.sendPilotsToRace();
+            seat.sendPilotsToRace();
+
+            for(Pilot p : Organization.getInstance().getRacingPilots()){
+                System.out.println(p.toString());
+            }
+
+
     }
 }
