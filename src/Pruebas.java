@@ -59,12 +59,9 @@ public class Pruebas {
             Organization.getInstance().getTracks().add(circuito);
             Organization.getInstance().getTracks().add(chile);
 
-//            for(Pilot p : Organization.getInstance().getRacingPilots()){
-//                System.out.println(p.toString());
-//            }
             Organization.getInstance().showTracks();
             Organization.getInstance().showTeams();
 
-            System.out.println(seat.toString());
+            Organization.getInstance().celebrateRace();
     }
 }

@@ -177,6 +177,27 @@ public class Organization {
             System.out.println(t.toString());
 
         }
+        System.out.println();
+    }
+
+    public void celebrateRace(){
+        int counter=1;
+        for(Trackable t : tracks){
+            System.out.println("*********************************************************************************************************");
+            System.out.println("*** RACE<" + counter + "> IN " + t.toString() + "***");
+            System.out.println("*********************************************************************************************************");
+            for(Team team : Organization.getInstance().getTeamList()){
+                team.sendPilotsToRace();
+            }
+            System.out.println("*********************************************************************************************************");
+            System.out.println("******************************** Pilots which will compete in " + t.getTrackName() + " ********************************");
+            for(Pilot p : racingPilots){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    public void manageChampionship(){
 
     }
 }

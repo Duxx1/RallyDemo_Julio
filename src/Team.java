@@ -192,16 +192,18 @@ public class Team {
                     }
                 }
                 if (Organization.getInstance ().getPilotsLimit() > counter) {
-                    Organization.getInstance().getRacingPilots().add(p);
-                    carSet = false;
-                    counter++;
+                    if(p.getCar()!=null){
+                        Organization.getInstance().getRacingPilots().add(p);
+                        carSet = false;
+                        counter++;
+                    }
+                    else{
+                        System.out.println("¡¡¡ "+p.getName()+" is not sent to the race because his team("+
+                                getName()+") does not have more cars with available fuel !!!");
+                    }
                 }
                 if (counter >= Organization.getInstance().getPilotsLimit()) {
                     filled = true;
-                }
-                if(p.getCar()==null){
-                    System.out.println("¡¡¡ "+p.getName()+" is not sent to the race because his team("+
-                            getName()+") does not have more cars with available fuel !!!");
                 }
             }
         }
