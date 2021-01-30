@@ -21,7 +21,6 @@ public class Organization {
      */
     //default constructor invoked from Singleton
     private Organization () {
-        this.tracks = new TreeSet<>();
         this.racingPilots = new ArrayList <>();
         this.teamList = new ArrayList <>();
     }
@@ -140,7 +139,25 @@ public class Organization {
         this.teamList = teamList;
     }
 
+    /**
+     * Name: registerTeam
+     * @return nothing
+     *
+     * Registers a team in organization
+     */
     public void registerTeam (Team t) {
         getTeamList ().add (t);
     }
+
+    //despues de crear la organizacion, llamar a este metodo pasandole los criterios de ordenacion por parametros y el booleano
+    public void createSetForTracks(Comparator comp, boolean reverse){
+        if(reverse){
+            this.tracks=new TreeSet<>(Collections.reverseOrder(comp));
+        }
+        else{
+            this.tracks=new TreeSet<>(comp);
+        }
+    }
+
+    
 }
