@@ -71,7 +71,7 @@ public class Car implements Carable {
     @Override
     public String toString () {
         return "<car: " + getCarName () + "> <type: Normal> " + getCarSpeed ().toString ()
-                + getCarFuel ().toString () + "(current: " + getCurrentFuel () + ")>";
+                + getCarFuel ().toString () + "(current: " + getCurrentFuel () + ")>>";
     }
 }
 

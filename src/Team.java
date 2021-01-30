@@ -84,6 +84,7 @@ public class Team {
         return pilotSorter;
     }
 
+    //false ascendente, true descendente
     public void setPilotSorter (Comparator pilotSorter, boolean reverseSorting) {
         if (reverseSorting) {
             this.pilotSorter = Collections.reverseOrder (pilotSorter);
@@ -116,6 +117,7 @@ public class Team {
         Collections.sort (getCarList (), getCarSorter ());
     }
 
+    //inscribe la escuderia en el campeonato gestionado por la organizacion
     public void register () {
         Organization.getInstance ().registerTeam (this);
     }
@@ -126,5 +128,47 @@ public class Team {
             sum += p.getPoints ();
         }
         return sum;
+    }
+
+    /**
+     * Name: toString
+     * @return String
+     * Represents the information from the class in a String.
+     */
+
+    @Override
+    public String toString () {
+        return "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" +
+                "\n" +
+                "%%% " + getName() + " %%%" +
+                "\n" +
+                toStringPilotList () + toStringCarList () +
+                "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
+    }
+
+    public String toStringPilotList () {
+        StringBuilder builder = new StringBuilder ();
+        if (getPilotList ().size () == 0) {
+            builder.append ("No pilots in " + getName());
+        }
+        else {
+            for (Pilot p: getPilotList ()) {
+                builder.append (p.toString () + "\n");
+            }
+        }
+        return builder.toString ();
+    }
+
+    public String toStringCarList () {
+        StringBuilder builder = new StringBuilder ();
+        if (getCarList ().size () == 0) {
+            builder.append ("No cars in " + getName());
+        }
+        else {
+            for (Carable c: getCarList ()) {
+                builder.append (c.toString () + "\n");
+            }
+        }
+        return builder.toString ();
     }
 }

@@ -22,6 +22,6 @@ public enum CarFuel {
 
     @Override
     public String toString () {
-        return "<fuel: " + getName () + " (original: " + getValue () + ")> ";
+        return "<fuel: " + getName () + "(" + getValue () + ")";
     }
 }

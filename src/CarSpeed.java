@@ -24,6 +24,6 @@ public enum CarSpeed {
 
     @Override
     public String toString () {
-        return "<theo_speed: " + getName () + " (" + getValue () + ")>";
+        return "<theo_speed: " + getName () + "(" + getValue () + ")> ";
     }
 }
