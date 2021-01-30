@@ -63,7 +63,7 @@ public abstract class Pilot {
     public void setResults(List<Results> results) {
         this.results = results;
     }
-    
+
     public boolean isDisqualified() {
         return disqualified;
     }
