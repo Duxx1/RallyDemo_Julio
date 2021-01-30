@@ -20,7 +20,7 @@ public class DurableCar extends Car {
         if ((getExtraFuel () > 0.0) && (fuel < time)) {
             fuel += getExtraFuel ();
             setExtraFuel (0);
-            System.out.println ("+++ The" + super.getCarName () + "needs to use the extra tank to keep racing +++");
+            System.out.println ("+++ The " + super.getCarName () + " needs to use the extra tank to keep racing +++");
         }
         else {
             fuel = super.calculateRemainingFuel (t, p, time);

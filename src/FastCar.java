@@ -3,7 +3,7 @@ public class FastCar extends Car {
 
     public FastCar (String name, CarSpeed speed, CarFuel fuel) {
         super (name, speed, fuel);
-        setNitro (42.51);
+        setNitro (80.0);
     }
 
     public double getNitro () {
