@@ -1,16 +1,16 @@
 public class Pruebas {
         public static void main(String[] args) {
-    //        Trackable circuito = new Track("Circuito de Pruebas",TrackComplexity.MEDIUM,TrackDistance.INTERMEDIATE);
-    //        circuito = new GravelTrack(circuito);
+            Trackable circuito = new Track("Circuito de Pruebas",TrackComplexity.MEDIUM,TrackDistance.INTERMEDIATE);
+            circuito = new GravelTrack(circuito);
     //        System.out.println(circuito.toString());
-    //        circuito = new NightTrack((circuito));
+            circuito = new NightTrack((circuito));
     //        System.out.println(circuito.toString());
 
     //        System.out.println("#############################");
     //        System.out.println("PROBANDO LOS PILOTOS");
     //        System.out.println("#############################");
-    //        Trackable chile = new Track("Chile",TrackComplexity.HIGH,TrackDistance.SHORT);
-    //        chile = new GravelTrack(chile);
+            Trackable chile = new Track("Chile",TrackComplexity.HIGH,TrackDistance.SHORT);
+            chile = new GravelTrack(chile);
     //        Pilot pilot=new StarPilot("McRae",Concentration.FOCUSED);
     //        Carable car = new FastCar("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS);
     //        car.setCurrentFuel(car.getCurrentFuel()-76.03);
@@ -25,9 +25,10 @@ public class Pruebas {
     //        piloto_coche_r.setCar(coche_resistente);
     //        piloto_coche_r.drive(circuito_cocheResistente);
 
-            Organization org=Organization.getInstance();
-            org.setLeftLimit(1);
-            org.setPilotsLimit(2);
+
+            Organization.getInstance().createSetForTracks(new TrackComplexityComparator(), false);
+            Organization.getInstance().setLeftLimit(1);
+            Organization.getInstance().setPilotsLimit(2);
             Team peugeot = new Team("Peugeot");
             Pilot pilot=new StarPilot("McRae",Concentration.FOCUSED);
             peugeot.getPilotList().add(pilot);
@@ -55,13 +56,15 @@ public class Pruebas {
             peugeot.register();
             seat.register();
 
-            peugeot.sendPilotsToRace();
-            seat.sendPilotsToRace();
+            Organization.getInstance().getTracks().add(circuito);
+            Organization.getInstance().getTracks().add(chile);
 
-            for(Pilot p : Organization.getInstance().getRacingPilots()){
-                System.out.println(p.toString());
-            }
+//            for(Pilot p : Organization.getInstance().getRacingPilots()){
+//                System.out.println(p.toString());
+//            }
+            Organization.getInstance().showTracks();
+            Organization.getInstance().showTeams();
 
-
+            System.out.println(seat.toString());
     }
 }

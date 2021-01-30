@@ -159,5 +159,24 @@ public class Organization {
         }
     }
 
-    
+    public void showTracks(){
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||| TRACKS OF CHAMPIONSHIP |||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        for(Trackable track : tracks){
+            System.out.println(track.toString());
+        }
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+    }
+
+    public void showTeams(){
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println("%%%%%%%% TEAMS OF THE CHAMPIONSHIP %%%%%%%%");
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        for(Team t : teamList){
+            System.out.println(t.toString());
+
+        }
+
+    }
 }
