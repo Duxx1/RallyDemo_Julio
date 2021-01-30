@@ -35,4 +35,10 @@ public class FastCar extends Car {
         }
         return realSpeed;
     }
+
+    @Override
+    public String toString () {
+        return "<car: " + getCarName () + "> <type: Fast> " + getCarSpeed ().toString ()
+                + getCarFuel ().toString () + "(current: " + getCurrentFuel () + ")>> <remaining nitro: " + getNitro () + ">";
+    }
 }
