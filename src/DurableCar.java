@@ -24,7 +24,7 @@ public class DurableCar extends Car {
             System.out.println ("+++ The" + super.getCarName () + "needs to use the extra tank to keep racing +++");
         }
         else {
-            fuel = super.calculateRemainingFuel (t, p)
+            fuel = super.calculateRemainingFuel (t, p);
         }
         return Math.round ((fuel) * 100d) / 100d;
     }

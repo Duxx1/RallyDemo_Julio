@@ -36,7 +36,7 @@ public class ExperiencedPilot  extends Pilot{
      */
     @Override
     public Double calculateSkill(){
-        return Math.round((((getConcentrationValue() + EXTRA_SKILL_EXPERIENCED) / 130) *1.03) *100d) / 100d;
+        return Math.round((((getConcentration().getConcentrationValue() + EXTRA_SKILL_EXPERIENCED) / 130) *1.03) *100d) / 100d;
     }
 
     @Override

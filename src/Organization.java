@@ -14,6 +14,7 @@ public class Organization {
     private Set<Trackable> tracks;//A set for the tracks where the races will be celebrated
     private List<Pilot> racingPilots;//A list for the pilots which will race
     private List<Team> teamList;//A list for the teams which will compete
+    private Map <String, Team> disqualifiedPilots;//The map for the disqualified pilots
 
     /**
      * Name: Organization
@@ -90,22 +91,52 @@ public class Organization {
         return tracks;
     }
 
+    /**
+     * Name: setTracks
+     * @return TreeSet <Trackable>
+     *
+     * Establishes the set of tracks.
+     */
     public void setTracks(Set<Trackable> tracks) {
         this.tracks = tracks;
     }
 
+    /**
+     * Name: getRacingPilots
+     * @return ArrayList <Pilot>
+     *
+     * Returns the list of pilots.
+     */
     public List<Pilot> getRacingPilots() {
         return racingPilots;
     }
 
+    /**
+     * Name: setRacingPilots
+     * @return ArrayList <Pilot>
+     *
+     * Establishes the list of pilots.
+     */
     public void setRacingPilots(List<Pilot> racingPilots) {
         this.racingPilots = racingPilots;
     }
 
+    /**
+     * Name: getTeamList
+     * @return ArrayList <Team>
+     *
+     * Returns the list of teams.
+     */
     public List<Team> getTeamList() {
         return teamList;
     }
 
+    /**
+     * Name: setTeamList
+     * @return ArrayList <Team>
+     *
+     * Establishes the list of teams for the Organization.
+     */
     public void setTeamList(List<Team> teamList) {
         this.teamList = teamList;
     }

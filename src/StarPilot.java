@@ -35,7 +35,7 @@ public class StarPilot extends Pilot{
      */
     @Override
     public Double calculateSkill(){
-        return Math.round(((((this.getConcentrationValue() + EXTRA_SKILL_STAR) / 140) * 1.06) +0.05) *100d) /100d;
+        return Math.round(((((getConcentration().getConcentrationValue() + EXTRA_SKILL_STAR) / 140) * 1.06) +0.05) *100d) /100d;
     }
 
     /**
