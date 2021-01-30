@@ -9,7 +9,7 @@ import java.util.*;
 
 public abstract class Pilot {
     private String name;
-    private Car car;
+    private Carable car;
     protected Concentration concentration; //the enum type
     private List<Results> results;
     private boolean disqualified;
@@ -36,11 +36,11 @@ public abstract class Pilot {
         this.name = name;
     }
 
-    public Car getCar() {
+    public Carable getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar (Carable car) {
         this.car = car;
     }
 
