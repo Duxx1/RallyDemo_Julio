@@ -4,15 +4,15 @@ public class TrackDistanceComparator implements Comparator <Trackable> {
 
     @Override
     public int compare (Trackable t1, Trackable t2) {
-        if (t1.getTrackDistance ().getDistanceValue() < t2.getTrackDistance ().getDistanceValue ()) {
+        if (t1.calculateDistance() < t2.calculateDistance()) {
             return -1;
         }
         else {
-            if (t1.getTrackDistance ().getDistanceValue () > t2.getTrackDistance ().getDistanceValue ()) {
+            if (t1.calculateDistance() > t2.calculateDistance()) {
                 return 1;
             }
             else {
-                return 0;
+                return t1.getTrackName().compareTo(t2.getTrackName());
             }
         }
     }

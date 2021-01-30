@@ -10,13 +10,13 @@ import java.util.*;
 public abstract class Pilot {
     private String name;
     private Carable car;
-    protected Concentration concentration; //the enum type
+    protected PilotConcentration concentration; //the enum type
     private List<Results> results;
     private boolean disqualified;
     private int leavesNumber;   //es el numero de abandonos
     private int finishedRacesNumber;    //numero de carreras terminadas
 
-    public Pilot(String name, Concentration concentration){
+    public Pilot(String name, PilotConcentration concentration){
         this.name=name;
         this.concentration=concentration;
         this.disqualified=false;
@@ -42,7 +42,7 @@ public abstract class Pilot {
         this.car = car;
     }
 
-    public Concentration getConcentration() {
+    public PilotConcentration getConcentration() {
         return concentration;
     }
 
@@ -52,7 +52,7 @@ public abstract class Pilot {
         return concentration.getConcentrationName();
     }
 
-    public void setConcentration(Concentration concentration) {
+    public void setConcentration(PilotConcentration concentration) {
         this.concentration = concentration;
     }
 

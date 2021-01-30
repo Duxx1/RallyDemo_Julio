@@ -23,7 +23,7 @@ public class StarPilot extends Pilot{
      *
      * This method returns nothing since it is the class constructor.
      */
-    public StarPilot(String name, Concentration concentration){
+    public StarPilot(String name, PilotConcentration concentration){
         super(name, concentration);
     }
 

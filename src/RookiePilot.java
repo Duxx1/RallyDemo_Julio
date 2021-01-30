@@ -23,7 +23,7 @@ public class RookiePilot extends Pilot{
      *
      * This method returns nothing since it is the class constructor.
      */
-    public RookiePilot(String name, Concentration concentration){
+    public RookiePilot(String name, PilotConcentration concentration){
         super(name, concentration);
     }
 

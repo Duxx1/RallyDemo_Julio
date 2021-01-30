@@ -1,67 +1,77 @@
 public class Pruebas {
         public static void main(String[] args) {
-            Trackable circuito = new Track("Circuito de Pruebas",TrackComplexity.MEDIUM,TrackDistance.INTERMEDIATE);
-            circuito = new GravelTrack(circuito);
-    //        System.out.println(circuito.toString());
-            circuito = new NightTrack((circuito));
-    //        System.out.println(circuito.toString());
+            Organization.getInstance ().setLeftLimit (3);
+            Organization.getInstance ().setPilotsLimit(2);
+            Organization.getInstance ().createSetForTracks(new TrackDistanceComparator(), true);
 
-    //        System.out.println("#############################");
-    //        System.out.println("PROBANDO LOS PILOTOS");
-    //        System.out.println("#############################");
-            Trackable chile = new Track("Chile",TrackComplexity.HIGH,TrackDistance.SHORT);
-            chile = new GravelTrack(chile);
-    //        Pilot pilot=new StarPilot("McRae",Concentration.FOCUSED);
-    //        Carable car = new FastCar("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS);
-    //        car.setCurrentFuel(car.getCurrentFuel()-76.03);
-    //        pilot.setCar(car);
-    //        pilot.drive(chile);
-    //        System.out.println("PROBADO CON EXITO UN PILOTO CON UN COCHE RAPIDO");
+            Trackable Portugal = new Track ("Portugal", TrackComplexity.MEDIUM, TrackDistance.INTERMEDIATE);
+            Portugal = new GravelTrack (Portugal);
+            Portugal = new NightTrack (Portugal);
+            Organization.getInstance ().getTracks ().add (Portugal);
 
-    //        Trackable circuito_cocheResistente = new Track("circuito_cocheResistente",TrackComplexity.LOW,TrackDistance.SHORT);
-    //        Pilot piloto_coche_r=new StarPilot("Lleivi",Concentration.CLUELESS);
-    //        Carable coche_resistente = new DurableCar("Lleivimovil", CarSpeed.TURTLE, CarFuel.LIMITED);
-    //        coche_resistente.setCurrentFuel(0.0);
-    //        piloto_coche_r.setCar(coche_resistente);
-    //        piloto_coche_r.drive(circuito_cocheResistente);
+            Trackable Cerdena = new Track ("Cerdeña", TrackComplexity.HIGH, TrackDistance.SHORT);
+            Cerdena = new GravelTrack (Cerdena);
+            Cerdena = new WetTrack (Cerdena);
+            Organization.getInstance ().getTracks ().add (Cerdena);
 
+            Trackable Australia = new Track ("Australia", TrackComplexity.LOW, TrackDistance.LONG);
+            Australia = new GravelTrack (Australia);
+            Organization.getInstance ().getTracks ().add (Australia);
 
-            Organization.getInstance().createSetForTracks(new TrackComplexityComparator(), false);
-            Organization.getInstance().setLeftLimit(1);
-            Organization.getInstance().setPilotsLimit(2);
-            Team peugeot = new Team("Peugeot");
-            Pilot pilot=new StarPilot("McRae",Concentration.FOCUSED);
-            peugeot.getPilotList().add(pilot);
-            Pilot lleivi=new StarPilot("Lleivi",Concentration.CLUELESS);
-            peugeot.getPilotList().add(lleivi);
-            Carable car = new FastCar("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS);
-            car.setCurrentFuel(0.0);
-            peugeot.getCarList().add(car);
-            Carable lleivimovil = new DurableCar("Lleivimovil", CarSpeed.TURTLE, CarFuel.LIMITED);
-            lleivimovil.setCurrentFuel(0.0);
-            peugeot.getCarList().add(lleivimovil);
+            Trackable Corcega = new Track ("Córcega", TrackComplexity.MEDIUM, TrackDistance.INTERMEDIATE);
+            Corcega = new NightTrack (Corcega);
+            Corcega = new GravelTrack (Corcega);
+            Organization.getInstance ().getTracks ().add (Corcega);
 
-            Team seat = new Team("Seat");
-            Pilot p1=new StarPilot("Juan",Concentration.FOCUSED);
-            seat.getPilotList().add(p1);
-            Pilot p2=new StarPilot("Encarna",Concentration.CLUELESS);
-            seat.getPilotList().add(p2);
-            Carable car1 = new FastCar("Seat Cordoba", CarSpeed.CHEETAH, CarFuel.GENEROUS);
-            car1.setCurrentFuel(0.0);
-            seat.getCarList().add(car1);
-            Carable car2 = new DurableCar("Seat Arona", CarSpeed.TURTLE, CarFuel.LIMITED);
-            car2.setCurrentFuel(0.0);
-            seat.getCarList().add(car2);
+            Trackable Finlandia = new Track ("Finlandia", TrackComplexity.HIGH, TrackDistance.SHORT);
+            Finlandia = new NightTrack (Finlandia);
+            Finlandia = new ColdTrack (Finlandia);
+            Finlandia = new WetTrack (Finlandia);
+            Organization.getInstance ().getTracks ().add (Finlandia);
 
-            peugeot.register();
-            seat.register();
+            Trackable Alemania = new Track ("Alemania", TrackComplexity.MEDIUM, TrackDistance.INTERMEDIATE);
+            Alemania = new WetTrack (Alemania);
+            Organization.getInstance ().getTracks ().add (Alemania);
 
-            Organization.getInstance().getTracks().add(circuito);
-            Organization.getInstance().getTracks().add(chile);
+            Trackable Chile = new Track ("Chile", TrackComplexity.HIGH, TrackDistance.SHORT);
+            Chile = new GravelTrack (Chile);
+            Organization.getInstance ().getTracks ().add (Chile);
 
-            Organization.getInstance().showTracks();
+            Team Seat = new Team ("Seat");
+            Seat.getCarList ().add (new DurableCar ("Seat Tarraco", CarSpeed.TURTLE, CarFuel.GENEROUS));
+            Seat.getCarList ().add (new FastCar ("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS));
+            Seat.getCarList ().add (new Car ("Seat Arona", CarSpeed.FAST, CarFuel.LIMITED));
+            Seat.getPilotList ().add (new ExperiencedPilot("Ogier", PilotConcentration.STANDARD));
+            Seat.getPilotList ().add (new StarPilot("McRae", PilotConcentration.FOCUSED));
+            Seat.getPilotList ().add (new RookiePilot("Blomquist", PilotConcentration.CLUELESS));
+            Seat.setPilotSorter (new PilotPointsComparator(), false);
+            Seat.setCarSorter (new CarCurrentFuelComparator(), false);
+            Seat.register();
+
+            Team Peugeot = new Team ("Peugeot");
+            Peugeot.getCarList ().add (new DurableCar ("Peugeot 5008", CarSpeed.SLOW, CarFuel.GENEROUS));
+            Peugeot.getCarList ().add (new FastCar ("Peugeot 3008", CarSpeed.CHEETAH, CarFuel.NORMAL));
+            Peugeot.getCarList ().add (new Car ("Peugeot 2008", CarSpeed.AVERAGE, CarFuel.LIMITED));
+            Peugeot.getPilotList ().add (new ExperiencedPilot ("Kankunnen", PilotConcentration.FOCUSED));
+            Peugeot.getPilotList ().add (new StarPilot ("Sainz", PilotConcentration.ZEN));
+            Peugeot.getPilotList ().add (new RookiePilot("Sordo", PilotConcentration.CLUELESS));
+            Peugeot.setPilotSorter (new PilotPointsComparator(), false);
+            Peugeot.setCarSorter (new CarCurrentFuelComparator(), false);
+            Peugeot.register();
+
+            Team Citroen = new Team ("Citroen");
+            Citroen.getCarList ().add (new DurableCar ("Citroen C5", CarSpeed.FAST, CarFuel.ELEPHANT));
+            Citroen.getCarList ().add (new FastCar ("Citroen C4", CarSpeed.FAST, CarFuel.LIMITED));
+            Citroen.getCarList ().add (new Car ("Citroen C3", CarSpeed.FAST, CarFuel.LIMITED));
+            Citroen.getPilotList ().add (new ExperiencedPilot ("Loeb", PilotConcentration.STANDARD));
+            Citroen.getPilotList ().add (new StarPilot ("Makinen", PilotConcentration.ZEN));
+            Citroen.getPilotList ().add (new RookiePilot ("Auriol", PilotConcentration.STANDARD));
+            Citroen.setPilotSorter (new PilotPointsComparator(), true);
+            Citroen.setCarSorter (new CarCurrentFuelComparator(), true);
+            Citroen.register();
+
             Organization.getInstance().showTeams();
+            Organization.getInstance().showTracks();
 
-            Organization.getInstance().celebrateRace();
     }
 }

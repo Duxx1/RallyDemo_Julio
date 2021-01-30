@@ -191,6 +191,7 @@ public class Organization {
             }
             System.out.println("*********************************************************************************************************");
             System.out.println("******************************** Pilots which will compete in " + t.getTrackName() + " ********************************");
+            System.out.println("***********************************************************************************************************");
             for(Pilot p : racingPilots){
                 System.out.println(p.toString());
             }

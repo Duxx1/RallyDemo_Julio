@@ -24,7 +24,7 @@ public class ExperiencedPilot  extends Pilot{
      *
      * This method returns nothing since it is the class constructor.
      */
-    public ExperiencedPilot(String name, Concentration concentration){
+    public ExperiencedPilot(String name, PilotConcentration concentration){
         super(name, concentration);
     }
 

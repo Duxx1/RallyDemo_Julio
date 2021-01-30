@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Name: Track
  * It implements every method a Track has.
@@ -138,5 +140,18 @@ public class Track implements Trackable{
     public String toString () {
         return "<track: " + getTrackName() + "> <cond:> <comp: " + getTrackComplexity ().toString ()
                 + "<dist: " + getTrackDistance ().toString ();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Track track = (Track) o;
+        return name.equals(track.name) && complexity == track.complexity && distance == track.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, complexity, distance);
     }
 }
