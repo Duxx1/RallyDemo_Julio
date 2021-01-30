@@ -14,7 +14,6 @@
 //    private Set<Trackable> tracks;//A set for the tracks where the races will be celebrated
 //    private List<Pilot> racingPilots;//A list for the pilots which will race
 //    private List<Team> teamList;//A list for the teams which will compete
-//    private Map <String, Team> disqualifiedPilots;//The map for the disqualified pilots
 //
 //    /**
 //     * Name: Organization
