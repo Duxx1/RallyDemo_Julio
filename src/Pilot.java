@@ -13,7 +13,6 @@ public abstract class Pilot {
     protected Concentration concentration; //the enum type
     private List<Results> results;
     private boolean disqualified;
-    private double currentConcentration;
     private int leavesNumber;   //es el numero de abandonos
     private int finishedRacesNumber;    //numero de carreras terminadas
 
@@ -23,7 +22,6 @@ public abstract class Pilot {
         this.concentration=concentration;
         this.disqualified=false;
         this.results=new ArrayList<Results>();
-        this.currentConcentration=this.getConcentrationValue();
         this.leavesNumber=0;
         this.finishedRacesNumber=0;
     }
@@ -66,29 +64,12 @@ public abstract class Pilot {
         this.results = results;
     }
 
-    //this method checks wheter the pilot is disqualified or not
-    public boolean getDisqualifiedStatus(int maxLeaves){
-        if(leavesNumber >= maxLeaves){
-            setDisqualified(true);
-            return true;
-        }
-        return false;
-    }
-
     public boolean isDisqualified() {
         return disqualified;
     }
 
     public void setDisqualified(boolean disqualified) {
         this.disqualified = disqualified;
-    }
-
-    public double getCurrentConcentration() {
-        return currentConcentration;
-    }
-
-    public void setCurrentConcentration(double currentConcentration) {
-        this.currentConcentration = currentConcentration;
     }
 
     public int getLeavesNumber() {
@@ -124,7 +105,7 @@ public abstract class Pilot {
     public abstract Double calculateSkill();
 
     //a method for the pilot to drive a car in a concrete track
-    public void drive(Track track){
+    public void drive(Trackable track){
         if(car.getCurrentFuel() < 0){
             Results result0=new Results(0.0,0.0,null);
             result0.setTrack(track);
