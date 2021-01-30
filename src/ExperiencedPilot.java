@@ -24,8 +24,8 @@ public class ExperiencedPilot  extends Pilot{
      *
      * This method returns nothing since it is the class constructor.
      */
-    public ExperiencedPilot(String name, Car car, Concentration concentration, boolean disqualified){
-        super(name, car, concentration, disqualified);
+    public ExperiencedPilot(String name, Concentration concentration){
+        super(name, concentration);
     }
 
     /**

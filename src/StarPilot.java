@@ -23,8 +23,8 @@ public class StarPilot extends Pilot{
      *
      * This method returns nothing since it is the class constructor.
      */
-    public StarPilot(String name, Car car, Concentration concentration, boolean disqualified){
-        super(name, car, concentration, disqualified);
+    public StarPilot(String name, Concentration concentration){
+        super(name, concentration);
     }
 
     /**

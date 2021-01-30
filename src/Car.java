@@ -64,8 +64,8 @@ public class Car implements Carable {
     }
 
     @Override
-    public double calculateRemainingFuel (Trackable t, Pilot p) {
-        return Math.round ((getCurrentFuel () - calculateTime (t, p)) * 100d) / 100d;
+    public double calculateRemainingFuel (Trackable t, Pilot p, double time) {
+        return Math.round ((getCurrentFuel () - time) * 100d) / 100d;
     }
 
     @Override

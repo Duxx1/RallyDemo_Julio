@@ -9,6 +9,6 @@ public interface Carable {
     public abstract void setCurrentFuel (double fuel);
     public abstract double calculateRealSpeed (Trackable t, Pilot p);
     public abstract double calculateTime (Trackable t, Pilot p);
-    public abstract double calculateRemainingFuel (Trackable t, Pilot p);
+    public abstract double calculateRemainingFuel (Trackable t, Pilot p, double time);
     public abstract String toString ();
 }

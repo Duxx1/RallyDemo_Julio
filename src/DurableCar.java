@@ -15,8 +15,7 @@ public class DurableCar extends Car {
     }
 
     @Override
-    public double calculateRemainingFuel (Trackable t, Pilot p) {
-        double time = super.calculateTime (t, p);
+    public double calculateRemainingFuel (Trackable t, Pilot p, double time) {
         double fuel = getCurrentFuel ();
         if ((getExtraFuel () > 0.0) && (fuel < time)) {
             fuel += getExtraFuel ();
@@ -24,7 +23,7 @@ public class DurableCar extends Car {
             System.out.println ("+++ The" + super.getCarName () + "needs to use the extra tank to keep racing +++");
         }
         else {
-            fuel = super.calculateRemainingFuel (t, p);
+            fuel = super.calculateRemainingFuel (t, p, time);
         }
         return Math.round ((fuel) * 100d) / 100d;
     }

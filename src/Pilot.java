@@ -16,11 +16,11 @@ public abstract class Pilot {
     private int leavesNumber;   //es el numero de abandonos
     private int finishedRacesNumber;    //numero de carreras terminadas
 
-    public Pilot(String name, Car car, Concentration concentration, boolean disqualified){
+    public Pilot(String name, Concentration concentration){
         this.name=name;
-        this.car=car;
         this.concentration=concentration;
         this.disqualified=false;
+        setCar(null);
         this.results=new ArrayList<Results>();
         this.leavesNumber=0;
         this.finishedRacesNumber=0;
@@ -200,7 +200,7 @@ public abstract class Pilot {
         public void drive(Trackable track){
             double concentration = getConcentration().getConcentrationValue ();
             double time = getCar ().calculateTime(track, this);
-            double fuel = getCar ().calculateRemainingFuel(track, this);
+            double fuel = getCar ().calculateRemainingFuel(track, this, time);
             Results result0=new Results(-1.0,0.0,null);
             if ((concentration > time) && (fuel > 0)) {
                 result0.setTime(time);
