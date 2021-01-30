@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class Results {
     private Double time;
-    private Double points;
+    private int points;
     private Trackable track;
 
-    public Results(Double time, Double points, Trackable track) {   //we can use this constructor for testing
+    public Results(Double time, int points, Trackable track) {   //we can use this constructor for testing
         this.time = time;
         this.points = points;
         this.track = track;
@@ -26,11 +26,11 @@ public class Results {
         this.time = time;
     }
 
-    public Double getPoints() {
+    public int getPoints() {
         return points;
     }
 
-    public void setPoints(Double points) {
+    public void setPoints (int points) {
         this.points = points;
     }
 

@@ -93,10 +93,10 @@ public abstract class Pilot {
     }
 
     //this method returns the total points of the pilot
-    public double getPoints(){
-        double points=0;
+    public int getPoints () {
+        int points = 0;
         for(Results result : results){
-            points += result.getPoints();
+            points += result.getPoints ();
         }
         return points;
     }
@@ -201,11 +201,11 @@ public abstract class Pilot {
             double concentration = getConcentration().getConcentrationValue ();
             double time = getCar ().calculateTime(track, this);
             double fuel = getCar ().calculateRemainingFuel(track, this, time);
-            Results result0=new Results(-1.0,0.0,null);
+            Results result0=new Results(-1.0,0,null);
             if ((concentration > time) && (fuel > 0)) {
                 result0.setTime(time);
                 result0.setTrack(track);
-                result0.setPoints(-1.0);
+                result0.setPoints(-1);
                 getCar().setCurrentFuel (fuel);
                 setFinishedRacesNumber(finishedRacesNumber+1);
                 this.addResult(result0);

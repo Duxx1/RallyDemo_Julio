@@ -11,10 +11,17 @@ public class Team {
     private String name;
     private List<Pilot> pilotList;
     private List <Carable> carList;
-    private Map<String, Pilot> disqualifiedPilots;
+    private Map <String, Pilot> disqualifiedPilots;
 
     private Comparator pilotSorter;
     private Comparator carSorter;
+
+    public Team (String name) {
+        setName (name);
+        pilotList = new ArrayList <Pilot> ();
+        carList = new ArrayList <Carable> ();
+        disqualifiedPilots = new TreeMap <String, Pilot> ();
+    }
 
     /**
      * Name: getName
@@ -25,6 +32,7 @@ public class Team {
     public String getName() {
         return name;
     }
+
     /**
      * Name: setTeamName
      * @param name: String
@@ -42,11 +50,11 @@ public class Team {
      *
      * Returns the ArrayList of pilots.
      */
-    public List<Pilot> getPilotList() {
+    public List <Pilot> getPilotList () {
         return pilotList;
     }
 
-    public void setPilotList(List<Pilot> pilotList) {
+    public void setPilotList (List <Pilot> pilotList) {
         this.pilotList = pilotList;
     }
 
@@ -56,19 +64,67 @@ public class Team {
      *
      * Returns the LinkedList of cars.
      */
-    public List<Carable> getCarList() {
+    public List<Carable> getCarList () {
         return carList;
     }
 
-    public void setCarList(List<Carable> carList) {
+    public void setCarList (List<Carable> carList) {
         this.carList = carList;
     }
 
-    public Map<String, Pilot> getDisqualifiedPilots() {
+    public Map <String, Pilot> getDisqualifiedPilots() {
         return disqualifiedPilots;
     }
 
-    public void setDisqualifiedPilots(Map<String, Pilot> disqualifiedPilots) {
+    public void setDisqualifiedPilots (Map <String, Pilot> disqualifiedPilots) {
         this.disqualifiedPilots = disqualifiedPilots;
+    }
+
+    public Comparator getPilotSorter () {
+        return pilotSorter;
+    }
+
+    public void setPilotSorter (Comparator pilotSorter, boolean reverseSorting) {
+        if (reverseSorting) {
+            this.pilotSorter = Collections.reverseOrder (pilotSorter);
+        }
+        else {
+            this.pilotSorter = pilotSorter;
+        }
+        sortPilots ();
+    }
+
+    public void sortPilots () {
+        Collections.sort (getPilotList (), getPilotSorter ());
+    }
+
+    public Comparator getCarSorter () {
+        return carSorter;
+    }
+
+    public void setCarSorter (Comparator carSorter, boolean reverseSorting) {
+        if (reverseSorting) {
+            this.carSorter = Collections.reverseOrder (carSorter);
+        }
+        else {
+            this.carSorter = carSorter;
+        }
+        sortCars ();
+    }
+
+    public void sortCars () {
+        Collections.sort (getCarList (), getCarSorter ());
+    }
+
+    public void register () {
+        Organization.getInstance ().registerTeam (this);
+    }
+
+    public int calculateSumPilotPoints () {
+        int sum = 0;
+        for (Pilot p: getPilotList ()) {
+            sum += p.getPoints ();
+        }
+        return sum;
     }
 }
