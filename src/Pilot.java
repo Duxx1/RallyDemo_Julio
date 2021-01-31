@@ -21,7 +21,7 @@
             this.concentration=concentration;
             this.disqualified=false;
             setCar(null);
-            this.results=new ArrayList<Results>();
+            this.results=new LinkedList<Results>();
             this.leavesNumber=0;
             this.finishedRacesNumber=0;
         }
@@ -235,19 +235,6 @@
                 }
                 System.out.println ("+++ The remaining fuel in the " + getCar ().getCarName () + " after the race is " + Math.round ((getCar ().getCurrentFuel ()) * 100d) / 100d + " +++");
             }
-
-        //returns the time of a pilot in a concrete track
-        public double getTimeFromTrack(Trackable t){
-            boolean enc=false;
-            Results res=null;
-            for(int i=0; i<results.size() && !enc; i++){
-                res=results.get(i);
-                if(res.getTrack().getTrackName().equals(t.getTrackName())){
-                    enc=true;
-                }
-            }
-            return res.getTime();
-        }
 
         @Override
         public String toString(){
