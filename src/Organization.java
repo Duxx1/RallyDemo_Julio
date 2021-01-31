@@ -222,8 +222,9 @@ public class Organization {
         Iterator <Pilot> it1= getRacingPilots().iterator();
         Pilot aux1, aux2;
         int counter=1;
+        Collections.sort(racingPilots, new PilotLastTimeComparator());
         while(it1.hasNext()){
-
+            aux1=it1.next();
         }
     }
 
