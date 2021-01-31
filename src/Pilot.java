@@ -225,7 +225,7 @@ public abstract class Pilot {
                     if (concentration < time) {
                         result0.setTime(concentration-time);
                         result0.setTrack(track);
-                        getCar().setCurrentFuel(fuel);
+                        getCar().setCurrentFuel(concentration);
                         this.addResult(result0);
                         System.out.println("¡¡¡ " + getName() + " has lost their concentration when they only needed " +
                                 Math.round ((time - concentration) * 100d) / 100d + " more minutes to finish !!!");

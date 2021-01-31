@@ -189,7 +189,7 @@ public class Organization {
             for(Team team : Organization.getInstance().getTeamList()){
                 team.sendPilotsToRace();
             }
-            Collections.sort(racingPilots, new PilotRaceComparator());
+            Collections.sort(racingPilots, new PilotRaceComparator());//ordering pilots before the race
             System.out.println("*********************************************************************************************************");
             System.out.println("******************************** Pilots which will compete in " + t.getTrackName() + " ********************************");
             System.out.println("***********************************************************************************************************");
@@ -199,7 +199,12 @@ public class Organization {
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.println("+++++++++++++++++++++++++ START THE RACE IN AUSTRALIA +++++++++++++++++++++++++");
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
+            for(Pilot p : racingPilots){
+                System.out.println("@@@ Pilot "+counter+" of "+racingPilots.size());
+                System.out.println(p.toString());
+                System.out.println(p.getCar().toString());
+                p.drive(t);
+            }
 
             counter++;
         }
