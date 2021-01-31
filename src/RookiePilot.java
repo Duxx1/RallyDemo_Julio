@@ -46,7 +46,7 @@ public class RookiePilot extends Pilot{
      */
     @Override
     public String toString(){   //echarle un ojo al isDisqualified
-        return super.toString() + " <type: Newbie> <skill: " + calculateSkill() + "> " +
+        return super.toString() + " <type: Rookie> <skill: " + calculateSkill() + "> " +
                 getConcentration().toString() + "<disqualified: "  + isDisqualified() + ">";
     }
 }
