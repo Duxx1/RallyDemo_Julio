@@ -224,7 +224,7 @@
                     }
                     else {
                         if (concentration < time) {
-                            result0.setTime(concentration-time);
+                            result0.setTime(Math.round((concentration-time)*100d)/100d);
                             result0.setTrack(track);
                             getCar().setCurrentFuel(getCar().getCurrentFuel() - concentration);
                             this.addResult(result0);

@@ -223,13 +223,19 @@ public class Organization {
         Pilot aux;
         int counter=1;
         int points=10;
-        int var=0;
-        while(var < racingPilots.size()){
-            aux= getRacingPilots().get(var);
+        int negativeNumber=0;
+        int var = 0;
+        for(Pilot pil : racingPilots){
+            if(pil.getResults().getLast().getTime() < 0){
+                negativeNumber++;
+            }
+        }
+        while(var < negativeNumber){
+            aux= getRacingPilots().get(0);
             if(aux.getResults().getLast().getTime() < 0){
                 racingPilots.remove(aux);
                 racingPilots.add(aux);
-            }//at the end of the list the nevative times
+            }//at the end of the list the negative times
             var++;
         }
         Iterator <Pilot> it= getRacingPilots().iterator();
