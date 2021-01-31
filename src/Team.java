@@ -178,6 +178,7 @@ public class Team {
         boolean carSet = false;
         boolean filled = false;
         int counter = 0;
+        sortPilots();//ordering pilots
         Iterator <Pilot> pilotIterator = getPilotList ().iterator ();
         Iterator <Carable> carIterator = getCarList ().iterator ();
 

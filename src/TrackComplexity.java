@@ -3,7 +3,7 @@
  * This enumerator stores the different values of complexity that a track can possess (low, medium or high).
  *
  * @version 1.0 (01/29/2021)
- * @author Raúl Hormigo
+ * @author Raúl Hormigo && Eduardo Cano
  */
 
 public enum TrackComplexity {

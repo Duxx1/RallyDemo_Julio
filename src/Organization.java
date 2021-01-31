@@ -197,16 +197,33 @@ public class Organization {
                 System.out.println(p.toString());
             }
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            System.out.println("+++++++++++++++++++++++++ START THE RACE IN AUSTRALIA +++++++++++++++++++++++++");
+            System.out.println("+++++++++++++++++++++++++ Start the race in " + t.getTrackName()+ " +++++++++++++++++++++++++");
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            int numPilot=1;
             for(Pilot p : racingPilots){
-                System.out.println("@@@ Pilot "+counter+" of "+racingPilots.size());
+                System.out.println("@@@ Pilot "+numPilot+" of "+racingPilots.size());
                 System.out.println(p.toString());
                 System.out.println(p.getCar().toString());
                 p.drive(t);
+                numPilot++;
             }
+            //ordenar de menor a mayor, sacar los de ptos negativos
 
+            racingPilots.clear();
             counter++;
+        }
+    }
+
+    public void givePointsAfterRace(Trackable t){
+        System.out.println("@@@");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("+++++++++++++++++ Final result for the race in "+t.getTrackName()+" +++++++++++++++++");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        Iterator <Pilot> it1= getRacingPilots().iterator();
+        Pilot aux1, aux2;
+        int counter=1;
+        while(it1.hasNext()){
+
         }
     }
 
