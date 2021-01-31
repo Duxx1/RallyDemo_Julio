@@ -11,7 +11,8 @@
         private String name;
         private Carable car;
         protected PilotConcentration concentration; //the enum type
-        private List<Results> results;
+        private LinkedList<Results> results; //Preguntar en tutoría si el tipo estático puede ser LinkedList, ya que si no lo usamos (solo el dinámico es LinkedList)
+                                             // no nos deja acceder al getLast de las LinkedList (usado en PilotLastTimeComparator, y en la asignación de puntos despúes de una carrera, reduciendo el orden de complejidad)
         private boolean disqualified;
         private int leavesNumber;   //es el numero de abandonos
         private int finishedRacesNumber;    //numero de carreras terminadas
@@ -56,11 +57,11 @@
             this.concentration = concentration;
         }
 
-        public List<Results> getResults() {
+        public LinkedList<Results> getResults() {
             return results;
         }
 
-        public void setResults(List<Results> results) {
+        public void setResults(LinkedList<Results> results) {
             this.results = results;
         }
 
