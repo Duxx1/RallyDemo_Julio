@@ -12,9 +12,9 @@ public class Results {
     private int points;
     private Trackable track;
 
-    public Results(Double time, int points, Trackable track) {   //we can use this constructor for testing
+    public Results(Double time, Trackable track) {   //we can use this constructor for testing
         this.time = time;
-        this.points = points;
+        this.points = 0;
         this.track = track;
     }
 

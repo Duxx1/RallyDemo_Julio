@@ -70,8 +70,7 @@ public class Pruebas {
             Citroen.setCarSorter (new CarCurrentFuelComparator(), true);
             Citroen.register();
 
-            Organization.getInstance().showTeams();
-            Organization.getInstance().showTracks();
+            Organization.getInstance().manageChampionship();
 
     }
 }

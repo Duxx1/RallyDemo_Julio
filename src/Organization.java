@@ -189,16 +189,25 @@ public class Organization {
             for(Team team : Organization.getInstance().getTeamList()){
                 team.sendPilotsToRace();
             }
+            Collections.sort(racingPilots, new PilotRaceComparator());
             System.out.println("*********************************************************************************************************");
             System.out.println("******************************** Pilots which will compete in " + t.getTrackName() + " ********************************");
             System.out.println("***********************************************************************************************************");
             for(Pilot p : racingPilots){
                 System.out.println(p.toString());
             }
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            System.out.println("+++++++++++++++++++++++++ START THE RACE IN AUSTRALIA +++++++++++++++++++++++++");
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+
+            counter++;
         }
     }
 
     public void manageChampionship(){
-
+        showTracks();
+        showTeams();
+        celebrateRace();
     }
 }

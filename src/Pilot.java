@@ -201,7 +201,7 @@ public abstract class Pilot {
             double concentration = getConcentration().getConcentrationValue ();
             double time = getCar ().calculateTime(track, this);
             double fuel = getCar ().calculateRemainingFuel(track, this, time);
-            Results result0=new Results(-1.0,0,null);
+            Results result0=new Results(-1.0,null);
             if ((concentration > time) && (fuel > 0)) {
                 result0.setTime(time);
                 result0.setTrack(track);
