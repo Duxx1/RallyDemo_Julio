@@ -208,24 +208,49 @@ public class Organization {
                 numPilot++;
             }
             //ordenar de menor a mayor, sacar los de ptos negativos
-
+            givePointsAfterRace(t);
             racingPilots.clear();
             counter++;
         }
     }
 
     public void givePointsAfterRace(Trackable t){
+        Collections.sort(racingPilots, new PilotLastTimeComparator());
         System.out.println("@@@");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("+++++++++++++++++ Final result for the race in "+t.getTrackName()+" +++++++++++++++++");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Iterator <Pilot> it1= getRacingPilots().iterator();
-        Pilot aux1, aux2;
+        Pilot aux;
         int counter=1;
-        Collections.sort(racingPilots, new PilotLastTimeComparator());
-        while(it1.hasNext()){
-            aux1=it1.next();
+        int points=10;
+        int var=0;
+        while(var < racingPilots.size()){
+            aux= getRacingPilots().get(var);
+            if(aux.getResults().getLast().getTime() < 0){
+                racingPilots.remove(aux);
+                racingPilots.add(aux);
+            }//at the end of the list the nevative times
+            var++;
         }
+        Iterator <Pilot> it= getRacingPilots().iterator();
+        while(it.hasNext()){
+            aux=it.next();
+            if(aux.getResults().getLast().getTime() < 0){
+                aux.getResults().getLast().setPoints(0);
+                System.out.println("¡¡¡ "+aux.getName()+" has abandoned - Time: "+
+                        aux.getResults().getLast().getTime()+" minutes - Points: "+
+                        aux.getResults().getLast().getPoints() + " !!!");
+            }
+            else{
+                aux.getResults().getLast().setPoints(points);
+                System.out.println("@@@ Position("+counter+"): "+aux.getName()+" - Time: " +
+                        aux.getResults().getLast().getTime()+" minutes - Points: "+
+                        aux.getResults().getLast().getPoints() + " @@@");
+            }
+            points = points -2;
+            counter++;
+        }
+        System.out.println();
     }
 
     public void manageChampionship(){
