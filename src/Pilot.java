@@ -139,6 +139,7 @@
                             System.out.println("¡¡¡ " + getName() + " has lost their concentration when they only needed " +
                                     Math.round ((time - concentration) * 100d) / 100d + " more minutes to finish !!!");
                             System.out.println("¡¡¡ They had been racing for " + concentration + " minutes !!!");
+                            setLeavesNumber(leavesNumber+1);
                         }
                     }
                 }

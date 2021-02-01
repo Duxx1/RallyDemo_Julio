@@ -205,6 +205,10 @@ public class Organization {
                 System.out.println(p.toString());
                 System.out.println(p.getCar().toString());
                 p.drive(t);
+                if(p.getLeavesNumber() >= getLeftLimit()){
+                    p.setDisqualified(true);
+                    System.out.println("¡¡¡ "+p.getName()+" is DISQUALIFIED from the championship for reaching the leftLimit !!!");
+                }
                 numPilot++;
             }
             //ordenar de menor a mayor, sacar los de ptos negativos
@@ -277,10 +281,11 @@ public class Organization {
         int points=0;
         for(Pilot pil : pilotListForPoints){
             points=pil.getPoints();
-            System.out.println("@@@ Position("+counter+"): Makinen - Total Points: "+points+" @@@");
+            System.out.println("@@@ Position("+counter+"): "+pil.getName()+" - Total Points: "+points+" @@@");
             for(Results r : pil.getResults()){
                 System.out.println("Race ("+r.getTrack()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");//no se si necesitamos round
             }
+            counter++;
             System.out.println();
         }
     }
