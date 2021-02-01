@@ -31,6 +31,6 @@ public class DurableCar extends Car {
     @Override
     public String toString () {
         return "<car: " + getCarName () + "> <type: Durable> " + getCarSpeed ().toString ()
-                + getCarFuel ().toString () + "(current: " + getCurrentFuel () + ")>> <tank: " + getExtraFuel () + ">";
+                + getCarFuel ().toString () + "(current: " + Math.round(getCurrentFuel ()*100d)/100d + ")>> <tank: " + Math.round(getExtraFuel ()*100d)/100d + ">";
     }
 }
