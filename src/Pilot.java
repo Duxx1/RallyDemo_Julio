@@ -144,6 +144,7 @@
                     }
                 }
                 System.out.println ("+++ The remaining fuel in the " + getCar ().getCarName () + " after the race is " + Math.round ((getCar ().getCurrentFuel ()) * 100d) / 100d + " +++");
+                System.out.println("@@@");
             }
 
         @Override

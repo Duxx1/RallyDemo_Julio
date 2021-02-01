@@ -207,7 +207,9 @@ public class Organization {
                 p.drive(t);
                 if(p.getLeavesNumber() >= getLeftLimit()){
                     p.setDisqualified(true);
-                    System.out.println("¡¡¡ "+p.getName()+" is DISQUALIFIED from the championship for reaching the leftLimit !!!");
+                    System.out.println("@@@");
+                    System.out.println("¡¡¡ "+p.getName()+" is DISQUALIFIED from the championship for reaching the leftLimit("+getLeftLimit()+") !!!");
+                    System.out.println("@@@");
                 }
                 numPilot++;
             }
@@ -247,9 +249,16 @@ public class Organization {
             aux=it.next();
             if(aux.getResults().getLast().getTime() < 0){
                 aux.getResults().getLast().setPoints(0);
-                System.out.println("¡¡¡ "+aux.getName()+" has abandoned - Time: "+
-                        aux.getResults().getLast().getTime()+" minutes - Points: "+
-                        aux.getResults().getLast().getPoints() + " !!!");
+                if(aux.isDisqualified()){
+                    System.out.println("¡¡¡ "+aux.getName()+" has abandoned - Time: "+
+                            aux.getResults().getLast().getTime()+" minutes - Points: "+
+                            aux.getResults().getLast().getPoints() + " - Besides it has been disqualified for the rest of the championship !!!");
+                }
+                else{
+                    System.out.println("¡¡¡ "+aux.getName()+" has abandoned - Time: "+
+                            aux.getResults().getLast().getTime()+" minutes - Points: "+
+                            aux.getResults().getLast().getPoints() + " !!!");
+                }
             }
             else{
                 aux.getResults().getLast().setPoints(points);
