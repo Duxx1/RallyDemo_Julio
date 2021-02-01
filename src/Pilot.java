@@ -121,25 +121,25 @@
                     System.out.println ("+++ " + getName() + " finishes the race in " + time + " minutes +++");
                 }
                 else {
-                    if (fuel < 0) {
-                        result0.setTime(fuel);//combustible negativo que hubiese necesitado
-                        getCar().setCurrentFuel(fuel);
-                        setLeavesNumber(leavesNumber+1);
+                    if (concentration < time) {
+                        result0.setTime(Math.round((concentration-time)*100d)/100d);
                         result0.setTrack(track);
+                        getCar().setCurrentFuel(getCar().getCurrentFuel() - concentration);
                         this.addResult(result0);
-                        System.out.println ("¡¡¡ The " + getCar ().getCarName () + " has run out of fuel when there were only " + Math.round ((0 - fuel) * 100d) / 100d + " left to finish !!!");
-                        System.out.println ("¡¡¡ It had been racing for " + getCar ().getCurrentFuel () + " minutes !!!");
+                        System.out.println("¡¡¡ " + getName() + " has lost their concentration when they only needed " +
+                                Math.round ((time - concentration) * 100d) / 100d + " more minutes to finish !!!");
+                        System.out.println("¡¡¡ They had been racing for " + concentration + " minutes !!!");
+                        setLeavesNumber(leavesNumber+1);
                     }
                     else {
-                        if (concentration < time) {
-                            result0.setTime(Math.round((concentration-time)*100d)/100d);
-                            result0.setTrack(track);
-                            getCar().setCurrentFuel(getCar().getCurrentFuel() - concentration);
-                            this.addResult(result0);
-                            System.out.println("¡¡¡ " + getName() + " has lost their concentration when they only needed " +
-                                    Math.round ((time - concentration) * 100d) / 100d + " more minutes to finish !!!");
-                            System.out.println("¡¡¡ They had been racing for " + concentration + " minutes !!!");
+                        if (fuel < 0) {
+                            result0.setTime(fuel);//combustible negativo que hubiese necesitado
+                            getCar().setCurrentFuel(fuel);
                             setLeavesNumber(leavesNumber+1);
+                            result0.setTrack(track);
+                            this.addResult(result0);
+                            System.out.println ("¡¡¡ The " + getCar ().getCarName () + " has run out of fuel when there were only " + Math.round ((0 - fuel) * 100d) / 100d + " left to finish !!!");
+                            System.out.println ("¡¡¡ It had been racing for " + getCar ().getCurrentFuel () + " minutes !!!");
                         }
                     }
                 }

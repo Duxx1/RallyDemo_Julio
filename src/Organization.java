@@ -210,6 +210,7 @@ public class Organization {
                     System.out.println("@@@");
                     System.out.println("¡¡¡ "+p.getName()+" is DISQUALIFIED from the championship for reaching the leftLimit("+getLeftLimit()+") !!!");
                     System.out.println("@@@");
+                    System.out.println();
                 }
                 numPilot++;
             }
@@ -222,7 +223,6 @@ public class Organization {
 
     public void givePointsAfterRace(Trackable t){
         Collections.sort(racingPilots, new PilotLastTimeComparator());
-        System.out.println("@@@");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("+++++++++++++++++ Final result for the race in "+t.getTrackName()+" +++++++++++++++++");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
