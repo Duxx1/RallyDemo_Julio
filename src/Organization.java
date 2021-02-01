@@ -259,9 +259,36 @@ public class Organization {
         System.out.println();
     }
 
+    //this method shows the final clasification of the pilots
+    public void pilotsFinalClasification(){
+        System.out.println("**************************************************");
+        System.out.println("**************** END OF THE CHAMPIONSHIP ****************");
+        System.out.println("**************************************************");
+
+        //cogemos los pilotos de las escuderias y los metemos en una lista
+        List <Pilot> pilotListForPoints = new ArrayList<>();
+        for(Team t : teamList){
+            for(Pilot p : t.getPilotList()){
+                pilotListForPoints.add(p);
+            }
+        }//ordenamos la lista
+        Collections.sort(pilotListForPoints, new PilotPointsComparator());//puntos, destreza, nombre.   REVISAR
+        int counter=1;
+        int points=0;
+        for(Pilot pil : pilotListForPoints){
+            points=pil.getPoints();
+            System.out.println("@@@ Position("+counter+"): Makinen - Total Points: "+points+" @@@");
+            for(Results r : pil.getResults()){
+                System.out.println("Race ("+r.getTrack()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");//no se si necesitamos round
+            }
+            System.out.println();
+        }
+    }
+
     public void manageChampionship(){
         showTracks();
         showTeams();
         celebrateRace();
+
     }
 }
