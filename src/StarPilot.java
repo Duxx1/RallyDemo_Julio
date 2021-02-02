@@ -1,31 +1,30 @@
 /**
  * Name: StarPilot
- * It implements every method an StarPilot has.
+ * It implements every method a star pilot has.
  *
- * @version 1.0 (12/26/2020)
- * @author Raúl
+ * @version 1.0 ()
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public class StarPilot extends Pilot{
-
     private double EXTRA_SKILL_STAR = 6;
+
 
     /**
      * Name: StarPilot
      *
-     * @param name: String
-     * @param concentration: Concentration
+     * @param name is the pilot's name.
+     * @param concentration is the pilot's concentration.
      *
      * Initialises the attributes from the class given certain values.
-     * The parameter "pilotName" corresponds to the name of the pilot.
-     * The parameter "car" corresponds to the pilot's car.
-     * The parameter "pilotConcentration" corresponds to the pilot's concentration.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
-    public StarPilot(String name, PilotConcentration concentration){
-        super(name, concentration);
+
+    public StarPilot (String name, PilotConcentration concentration){
+        super (name, concentration);
     }
+
 
     /**
      * Name: calculateSkill
@@ -33,19 +32,25 @@ public class StarPilot extends Pilot{
      *
      * Returns the skill from the pilot.
      */
+
     @Override
-    public Double calculateSkill(){
-        return Math.round(((((getConcentration().getConcentrationValue() + EXTRA_SKILL_STAR) / 140) * 1.06) +0.05) *100d) /100d;
+    public double calculateSkill () {
+        return Math.round (((((getConcentration ().getConcentrationValue () + EXTRA_SKILL_STAR) / 140) * 1.06) + 0.05) * 100d) / 100d;
     }
+
 
     /**
      * Name: toString
      * @return String
-     * Represents the class information in a String.
+     *
+     * Represents the class information in a String variable.
+     *
+     * Returns a String variable.
      */
+
     @Override
-    public String toString(){
-        return super.toString() + " <type: Star> <skill: " + calculateSkill() + "> " +
-                getConcentration().toString() + "<disqualified: " + isDisqualified() + ">";
+    public String toString () {
+        return super.toString () + " <type: Star> <skill: " + calculateSkill () + "> " +
+                getConcentration ().toString () + "<disqualified: " + isDisqualified () + ">";
     }
 }

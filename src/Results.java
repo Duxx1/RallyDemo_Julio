@@ -1,22 +1,33 @@
-import java.util.Objects;
-
 /**
  * Name: Results
- * This class contains the atributes needed for the reults
+ * This class contains the attributes needed for the results obtained after a race.
  *
- * @version 1.0 (12/24/2020) 29/01/21
- * @author Raúl && Eduardo
+ * @version 1.0 (01/29/2021) 29/01/21
+ * @author Raul Hormigo Ceron and Eduardo Cano García
+ *
  */
+
 public class Results {
     private Double time;
     private int points;
     private Trackable track;
 
-    public Results(Double time, Trackable track) {   //we can use this constructor for testing
-        this.time = time;
-        this.points = 0;
-        this.track = track;
+    /**
+     * Name: Results
+     * @param time is the time that is obtained after a race.
+     * @param track is the track where the pilot has raced.
+     *
+     * Initialises the attributes from the class to certain given ones, except the points; which are initialised with 0.
+     *
+     * This method returns nothing
+     */
+
+    public Results (Double time, Trackable track) {   //we can use this constructor for testing
+        setTime (time);
+        setPoints (0);
+        setTrack (track);
     }
+
 
     /**
      * Name: getTime
@@ -24,20 +35,25 @@ public class Results {
      *
      * Returns the time of the result.
      */
-    public Double getTime() {
+
+    public double getTime () {
         return time;
     }
 
+
     /**
      * Name: setTime
-     * @param time: Double
-     * Sets the given time to the result.
-     * The parameter "time" corresponds to the time of the result.
+     * @param time is the time that will be assigned.
+     *
+     * Sets the given time to the time attribute.
+     *
      * This method returns nothing.
      */
-    public void setTime(Double time) {
+
+    public void setTime (double time) {
         this.time = time;
     }
+
 
     /**
      * Name: getPoints
@@ -45,20 +61,25 @@ public class Results {
      *
      * Returns the points of the result.
      */
-    public int getPoints() {
+
+    public int getPoints () {
         return points;
     }
 
+
     /**
      * Name: setPoints
-     * @param points: int
+     * @param points are the points that will be assigned.
+     *
      * Sets the given points to the result.
-     * The parameter "points" corresponds to the points of the result.
+     *
      * This method returns nothing.
      */
+
     public void setPoints (int points) {
         this.points = points;
     }
+
 
     /**
      * Name: getTrack
@@ -66,32 +87,22 @@ public class Results {
      *
      * Returns the track of the result.
      */
-    public Trackable getTrack() {
+
+    public Trackable getTrack () {
         return track;
     }
 
+
     /**
      * Name: setTrack
-     * @param track: Trackable
+     * @param track is the track that will be assigned.
+     *
      * Sets the given track to the result.
-     * The parameter "track" corresponds to the track of the result.
+     *
      * This method returns nothing.
      */
-    public void setTrack(Trackable track) {
+
+    public void setTrack (Trackable track) {
         this.track = track;
-    }
-
-    //mirar si esto nos hace falta
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Results results = (Results) o;
-        return Objects.equals(time, results.time) && Objects.equals(points, results.points) && Objects.equals(track, results.track);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(time, points, track);
     }
 }

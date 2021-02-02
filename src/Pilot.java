@@ -227,7 +227,7 @@
          *
          * This is a method that will be overriden in the subclases.
          */
-        public abstract Double calculateSkill();
+        public abstract double calculateSkill();
 
         /**
          * Name: drive
