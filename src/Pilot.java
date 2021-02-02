@@ -1,12 +1,11 @@
+import java.util.*;
     /**
      * Name: Pilot
      * This class represents all the info a Pilot must have
      *
      * @version 1.0 (12/24/2020) 29/01/21
-     * @author Raúl && Eduardo
+     * @author Raul Hormigo Ceron and Eduardo Cano Garcia
      */
-    import java.util.*;
-
     public abstract class Pilot {
         private String name;
         private Carable car;
@@ -167,7 +166,7 @@
         /**
          * Name: setLeavesNumber
          * @param leavesNumber: int
-         * Sets the given number of leabes to the pilot.
+         * Sets the given number of leaves to the pilot.
          * The parameter "leavesNumber" corresponds to the number of leaves of the pilot.
          * This method returns nothing.
          */
@@ -225,7 +224,7 @@
          * Name: calculateSkill
          * @return Double
          *
-         * This is a method that will be overriden in the subclases.
+         * This is a method that will be overriden in the subclasses, used to calculate the skill of a pilot.
          */
         public abstract double calculateSkill();
 

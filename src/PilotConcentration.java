@@ -3,7 +3,7 @@
  * This enumerator stores the different values of concentration that a pilot can possess (clueless, standard, focused or zen).
  *
  * @version 1.0 (12/24/2020) 29/01/21
- * @author Raúl && Eduardo
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public enum PilotConcentration {
@@ -17,7 +17,7 @@ public enum PilotConcentration {
 
     /**
      * Name: PilotConcentration
-     *
+     * @param concentrationName: String
      * @param concentrationValue: double
      *
      * Initialises the enumerator given certain values.
@@ -61,7 +61,7 @@ public enum PilotConcentration {
      * Name: toString
      * @return String
      *
-     * Returns a String representation of the information stored in the TrackComplexity.
+     * Returns a String representation of the information stored in the PilotConcentration.
      */
 
     @Override

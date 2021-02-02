@@ -1,5 +1,11 @@
 import java.util.*;
-
+/**
+ * Name: PilotConcentrationComparator
+ * This class is used to compare pilots according to their concentration.
+ *
+ * @version     1.0
+ * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
+ */
 public class PilotConcentrationComparator implements Comparator<Pilot>{
     @Override
     public int compare(Pilot p1, Pilot p2){

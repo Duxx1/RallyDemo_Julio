@@ -204,6 +204,11 @@ public class Organization {
         System.out.println();
     }
 
+    /**
+     * Name: celebrateRace
+     *
+     * This method celebrates the all the races of the championship.
+     */
     public void celebrateRace(){
         int counter=1;
         for(Trackable t : tracks){
@@ -245,6 +250,13 @@ public class Organization {
         }
     }
 
+    /**
+     * Name: givePointsAfterRace
+     * @param t: Trackable
+     * The param "t" is the track
+     *
+     * This method gives the points to each pilot that has raced in the track.
+     */
     public void givePointsAfterRace(Trackable t){
         Collections.sort(racingPilots, new PilotLastTimeComparator());
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -296,6 +308,11 @@ public class Organization {
         System.out.println();
     }
 
+    /**
+     * Name: pilotsFinalClasification
+     *
+     * This method shows the final clasification of the pilots.
+     */
     //this method shows the final clasification of the pilots
     public void pilotsFinalClasification(){
         System.out.println("**************************************************");
@@ -323,6 +340,11 @@ public class Organization {
         }
     }
 
+    /**
+     * Name: manageChampionship
+     *
+     * This method manages the championship.
+     */
     public void manageChampionship(){
         showTracks();
         showTeams();
