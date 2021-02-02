@@ -3,7 +3,7 @@
  * Helps wrap a regular Track with extra features.
  *
  * @version 1.0 (12/23/2020) 29/01/21
- * @author Raúl && Eduardo
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public abstract class ExtraComplications implements Trackable{

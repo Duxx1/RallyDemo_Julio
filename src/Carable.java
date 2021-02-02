@@ -1,3 +1,11 @@
+/**
+ * Name: Carable
+ * The interface that is implemented on the class car and that contains methods for the cars.
+ *
+ * @version     1.0
+ * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
+ */
+
 public interface Carable {
     public abstract String getCarName ();
     public abstract void setCarName (String name);

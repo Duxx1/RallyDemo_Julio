@@ -3,7 +3,7 @@
  * It implements every method an ExperiencedPilot has.
  *
  * @version 1.0 (12/26/2020) 29/01/21
- * @author Raúl && Eduardo
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public class ExperiencedPilot  extends Pilot{
@@ -39,6 +39,11 @@ public class ExperiencedPilot  extends Pilot{
         return Math.round((((getConcentration().getConcentrationValue() + EXTRA_SKILL_EXPERIENCED) / 130) *1.03) *100d) / 100d;
     }
 
+    /**
+     * Name: toString
+     * @return String
+     * Represents the information of an experienced pilot using a String.
+     */
     @Override
     public String toString(){   //echarle un ojo al isDisqualified
         return super.toString() + " <type: Experienced> <skill: " + calculateSkill() + "> " +

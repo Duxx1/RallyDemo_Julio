@@ -5,7 +5,7 @@ import java.util.*;
  * The class that organises the tournament.
  *
  * @version 1.0 (12/27/2020) 30/01/21
- * @author Raúl && Eduardo
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 public class Organization {
     private static Organization organization = null;//this is for the Singleton design pattern
@@ -17,6 +17,7 @@ public class Organization {
 
     /**
      * Name: Organization
+     * Initialises the values of the class to the given.
      * This method returns nothing since it is the class constructor.
      */
     //default constructor invoked from Singleton
@@ -28,7 +29,7 @@ public class Organization {
     /**
      * Name: getInstance
      * @return Organization
-     * Returns the instance of the Organization
+     * Returns the instance of the Organization.
      */
     public static Organization getInstance () {
         if (organization == null) {
@@ -50,8 +51,8 @@ public class Organization {
     /**
      * Name: setLeftLimit
      * @param leftLimit: int
-     * Sets the given left limit to the organization's.
-     * The parameter "leftLimit" corresponds to the left limit of the organization.
+     * Sets the given left limit to the organization.
+     * The param "leftLimit" corresponds to the left limit of the organization.
      * This method returns nothing.
      */
     public void setLeftLimit(int leftLimit) {
@@ -71,8 +72,8 @@ public class Organization {
     /**
      * Name: setPilotLimit
      * @param pilotsLimit: int
-     * Sets the given pilot limit to the organization's.
-     * The parameter "pilotLimit" corresponds to the pilot limit of the organization.
+     * Sets the given pilot limit to the organization.
+     * The param "pilotsLimit" corresponds to the pilot limit of the organization.
      * This method returns nothing.
      */
     public void setPilotsLimit(int pilotsLimit) {
@@ -81,9 +82,9 @@ public class Organization {
 
     /**
      * Name: getTracks
-     * @return TreeSet <Trackable>
+     * @return Set <Trackable>
      *
-     * Returns set of tracks.
+     * Returns a set of tracks.
      */
     public Set<Trackable> getTracks() {
         return tracks;
@@ -91,8 +92,9 @@ public class Organization {
 
     /**
      * Name: setTracks
-     * @return TreeSet <Trackable>
+     * @param tracks: Set<Trackable>
      *
+     * The param "tracks" is the set of tracks.
      * Establishes the set of tracks.
      */
     public void setTracks(Set<Trackable> tracks) {
@@ -101,7 +103,7 @@ public class Organization {
 
     /**
      * Name: getRacingPilots
-     * @return ArrayList <Pilot>
+     * @return List <Pilot>
      *
      * Returns the list of pilots.
      */
@@ -111,7 +113,8 @@ public class Organization {
 
     /**
      * Name: setRacingPilots
-     * @return ArrayList <Pilot>
+     * @param racingPilots: List<Pilot>
+     * The param "racingPilots" is the list of the pilots that will race.
      *
      * Establishes the list of pilots.
      */
@@ -121,7 +124,7 @@ public class Organization {
 
     /**
      * Name: getTeamList
-     * @return ArrayList <Team>
+     * @return List <Team>
      *
      * Returns the list of teams.
      */
@@ -131,7 +134,8 @@ public class Organization {
 
     /**
      * Name: setTeamList
-     * @return ArrayList <Team>
+     * @param teamList: List<Team>
+     * The param "teamList" is the list of teams that will compete.
      *
      * Establishes the list of teams for the Organization.
      */
@@ -141,14 +145,24 @@ public class Organization {
 
     /**
      * Name: registerTeam
-     * @return nothing
+     * @param t: Team
+     * The param "t" is the team that will be registered.
      *
-     * Registers a team in organization
+     * Registers a team in the organization.
      */
     public void registerTeam (Team t) {
         getTeamList ().add (t);
     }
 
+    /**
+     * Name: createSetForTracks
+     * @param comp: Comparator
+     * @param reverse: boolean
+     * The param "comp" is the comparator that will be used.
+     * The param "reversed" is used to invert the order of the sorting.
+     *
+     * Creates a set for the tracks, which will be ordered at its creation.
+     */
     //despues de crear la organizacion, llamar a este metodo pasandole los criterios de ordenacion por parametros y el booleano
     public void createSetForTracks(Comparator comp, boolean reverse){
         if(reverse){
@@ -159,6 +173,11 @@ public class Organization {
         }
     }
 
+    /**
+     * Name: showTracks
+     *
+     * Shows all the tracks of the championship.
+     */
     public void showTracks(){
         System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
         System.out.println("||||||||||||||||||| TRACKS OF CHAMPIONSHIP |||||||||||||||||||");
@@ -169,6 +188,11 @@ public class Organization {
         System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
     }
 
+    /**
+     * Name: showTeams
+     *
+     * Shows all the teams of the championship.
+     */
     public void showTeams(){
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         System.out.println("%%%%%%%% TEAMS OF THE CHAMPIONSHIP %%%%%%%%");

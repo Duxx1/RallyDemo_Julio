@@ -3,7 +3,7 @@
  * Stores all the features necessary for a Cold-decorated Track.
  *
  * @version 1.0 (12/23/2020)
- * @author Raúl
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public class ColdTrack extends ExtraComplications{
@@ -25,12 +25,11 @@ public class ColdTrack extends ExtraComplications{
         super (track);
     }
 
-
     /**
      * Name: calculateComplexity
      * @return double
      *
-     * Changes the currentComplexity applying a Cold-decorated track complexity factor.
+     * Calculates the currentComplexity applying a Cold-decorated track complexity factor.
      */
 
     @Override
@@ -38,19 +37,17 @@ public class ColdTrack extends ExtraComplications{
         return Math.round ((super.calculateComplexity () * complexityFactor) * 100d) / 100d;
     }
 
-
     /**
      * Name: calculateDistance
      * @return double
      *
-     * Changes the currentDistance applying a Cold-decorated track distance factor.
+     * Calculates the currentDistance applying a Cold-decorated track distance factor.
      */
 
     @Override
     public double calculateDistance () {
         return Math.round ((super.calculateDistance () * distanceFactor) * 100d) / 100d;
     }
-
 
     /**
      * Name: conditionString

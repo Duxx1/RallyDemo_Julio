@@ -3,7 +3,7 @@
  * Stores all the features necessary for a Gravel-decorated Track.
  *
  * @version 1.0 (12/23/2020) 21/01/21
- * @author Raúl && Eduardo
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public class GravelTrack extends ExtraComplications{
@@ -30,7 +30,7 @@ public class GravelTrack extends ExtraComplications{
      * Name: calculateComplexity
      * @return double
      *
-     * Changes the currentComplexity applying a Cold-decorated track complexity factor.
+     * Calculates the currentComplexity applying a Cold-decorated track complexity factor.
      */
 
     @Override
@@ -43,7 +43,7 @@ public class GravelTrack extends ExtraComplications{
      * Name: calculateDistance
      * @return double
      *
-     * Changes the currentDistance applying a Cold-decorated track distance factor.
+     * Calculates the currentDistance applying a Cold-decorated track distance factor.
      */
 
     @Override

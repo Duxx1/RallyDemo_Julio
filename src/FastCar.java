@@ -1,3 +1,11 @@
+/**
+ * Name: FastCar
+ * This class represents all the information that a fast car must store.
+ *
+ * @version      1.0
+ * @author       Raul Hormigo Ceron and Eduardo Cano Garcia
+ */
+
 public class FastCar extends Car {
     private double nitro;
 
@@ -42,7 +50,7 @@ public class FastCar extends Car {
     }
 
     /**
-     * Name: setNitro
+     * Name: calculateRealSpeed
      * @param t: Trackable
      * @param p: Pilot
      * @return double.
