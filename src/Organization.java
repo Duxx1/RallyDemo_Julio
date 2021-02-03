@@ -245,6 +245,9 @@ public class Organization {
             }
             //ordenar de menor a mayor, sacar los de ptos negativos
             givePointsAfterRace(t);
+            for (Pilot p: getRacingPilots ()) {
+                p.setCar (null);
+            }
             racingPilots.clear();
             counter++;
         }

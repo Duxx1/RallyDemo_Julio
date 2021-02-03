@@ -258,17 +258,17 @@ import java.util.*;
                         this.addResult(result0);
                         System.out.println("¡¡¡ " + getName() + " has lost their concentration when they only needed " +
                                 Math.round ((time - concentration) * 100d) / 100d + " more minutes to finish !!!");
-                        System.out.println("¡¡¡ They had been racing for " + concentration + " minutes !!!");
+                        System.out.println("¡¡¡ They had been racing for " + concentration + " minutes when they lost their concentration !!!");
                         setLeavesNumber(leavesNumber+1);
                     }
                     else {
                         result0.setTime (fuel);
-                        getCar().setCurrentFuel (fuel);
                         setLeavesNumber (leavesNumber + 1);
                         result0.setTrack(track);
                         this.addResult(result0);
                         System.out.println ("¡¡¡ The " + getCar ().getCarName () + " has run out of fuel when there were only " + Math.round ((0 - fuel) * 100d) / 100d + " left to finish !!!");
-                        System.out.println ("¡¡¡ It had been racing for " + getCar ().getCurrentFuel () + " minutes !!!");
+                        System.out.println ("¡¡¡ When it ran out of fuel, it had been racing for " + getCar ().getCurrentFuel () + " minutes !!!");
+                        getCar().setCurrentFuel (fuel);
                     }
                 }
             }
