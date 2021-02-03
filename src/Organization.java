@@ -14,6 +14,7 @@ public class Organization {
     private Set<Trackable> tracks;//A set for the tracks where the races will be celebrated
     private List<Pilot> racingPilots;//A list for the pilots which will race
     private List<Team> teamList;//A list for the teams which will compete
+    private Map<String, Pilot> disqualifiedPilots;
 
     /**
      * Name: Organization
@@ -24,6 +25,7 @@ public class Organization {
     private Organization () {
         this.racingPilots = new ArrayList <>();
         this.teamList = new ArrayList <>();
+        this.disqualifiedPilots = new TreeMap<>();
     }
 
     /**
@@ -292,6 +294,7 @@ public class Organization {
                     System.out.println("¡¡¡ "+aux.getName()+" has abandoned - Time: "+
                             aux.getResults().getLast().getTime()+" minutes - Points: "+
                             aux.getResults().getLast().getPoints() + " - Besides it has been disqualified for the rest of the championship !!!");
+
                 }
                 else{
                     System.out.println("¡¡¡ "+aux.getName()+" has abandoned - Time: "+
@@ -320,7 +323,9 @@ public class Organization {
 
     public void pilotsFinalClasification(){
         System.out.println("**************************************************");
-        System.out.println("**************** END OF THE CHAMPIONSHIP ****************");
+        System.out.println("**************** END OF THE CHAMPIONSHIP *********");
+        System.out.println("**************************************************");
+        System.out.println("************* PILOTS FINAL CLASIFICATION *********");
         System.out.println("**************************************************");
 
         //cogemos los pilotos de las escuderias y los metemos en una lista
@@ -330,17 +335,38 @@ public class Organization {
                 pilotListForPoints.add(p);
             }
         }//ordenamos la lista
-        Collections.sort(pilotListForPoints, new PilotPointsComparator());//puntos, destreza, nombre.   REVISAR
+
+        Collections.sort(pilotListForPoints, new PilotPointsComparator().reversed());//puntos, destreza, nombre.   REVISAR
+        Pilot aux=null;
+        for(int i=0; i<pilotListForPoints.size(); i++){
+            aux=pilotListForPoints.get(i);
+            if(aux.isDisqualified()){
+                disqualifiedPilots.put(aux.getName(), aux);
+            }
+        }//ponemos en el mapa los pilotos descalificados
+
         int counter=1;
         int points=0;
         for(Pilot pil : pilotListForPoints){
-            points=pil.getPoints();
-            System.out.println("@@@ Position("+counter+"): "+pil.getName()+" - Total Points: "+points+" @@@");
-            for(Results r : pil.getResults()){
-                System.out.println("Race ("+r.getTrack()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");//no se si necesitamos round
+            if(!pil.isDisqualified()){
+                points=pil.getPoints();
+                System.out.println("@@@ Position("+counter+"): "+pil.getName()+" - Total Points: "+points+" @@@");
+                for(Results r : pil.getResults()){
+                    System.out.println("Race ("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");//no se si necesitamos round
+                }
+                counter++;
+                System.out.println();
             }
-            counter++;
-            System.out.println();
+        }
+
+        System.out.println("**************************************************");
+        System.out.println("************* DISQUALIFIED PILOTS ****************");
+        System.out.println("**************************************************");
+        for (Pilot p : disqualifiedPilots.values()){
+            System.out.println("--- Disqualified Pilot: "+p.getName()+" - Total Erased Points:"+p.getPoints()+" ---");
+            for(Results r : p.getResults()){
+                System.out.println("Race("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");
+            }
         }
     }
 
@@ -353,6 +379,6 @@ public class Organization {
         showTracks();
         showTeams();
         celebrateRace();
-
+        pilotsFinalClasification();
     }
 }
