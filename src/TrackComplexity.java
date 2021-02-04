@@ -2,8 +2,9 @@
  * Name: TrackComplexity
  * This enumerator stores the different values of complexity that a track can possess (low, medium or high).
  *
- * @version 1.0 (01/29/2021)
- * @author Raúl Hormigo && Eduardo Cano
+ * @version 1.0 ()
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia.
+ *
  */
 
 public enum TrackComplexity {
@@ -18,13 +19,12 @@ public enum TrackComplexity {
     /**
      * Name: TrackComplexity
      *
-     * @param complexityValue: double
+     * @param complexityName is the name for the complexity.
+     * @param complexityValue is the value for the complexity.
      *
      * Initialises the enumerator given certain values.
-     * The parameter "complexityName" corresponds to the name of the complexity.
-     * The parameter "complexityValue" corresponds to the value of the complexity.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
 
     TrackComplexity (String complexityName, double complexityValue) {
@@ -37,7 +37,7 @@ public enum TrackComplexity {
      * Name: getComplexityName.
      * @return String
      *
-     * Returns the value stored in the complexity.
+     * Returns the name stored in the complexity.
      */
 
     public String getComplexityName () {

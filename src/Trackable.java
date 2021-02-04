@@ -3,8 +3,9 @@
  * This interface indicates all the methods that every Track must have, and those which access to data that will be modified
  *      according to the functionality that is added (Decorator design pattern).
  *
- * @version 1.0 (12/23/2020)
- * @author Raúl
+ * @version 1.0 ()
+ * @author Raul Hormigo Cerón and Eduardo Cano Garcia.
+ *
  */
 
 public interface Trackable {

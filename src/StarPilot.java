@@ -4,6 +4,7 @@
  *
  * @version 1.0 ()
  * @author Raul Hormigo Ceron and Eduardo Cano Garcia
+ *
  */
 
 public class StarPilot extends Pilot{

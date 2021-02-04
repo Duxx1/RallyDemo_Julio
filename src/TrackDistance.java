@@ -2,8 +2,9 @@
  * Name: TrackDistance
  * This enumerator stores the different values of distance that a track can possess (short, intermediate or long).
  *
- * @version 1.0 (12/23/2020) 29/01/21
- * @author Raúl && Eduardo
+ * @version 1.0 ()
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia.
+ *
  */
 
 public enum TrackDistance {
@@ -14,16 +15,16 @@ public enum TrackDistance {
     private final String distanceName;
     private final double distanceValue;
 
+
     /**
      * Name: TrackDistance
      *
-     * @param distanceValue: double
+     * @param distanceName is the name for the distance.
+     * @param distanceValue is the value for the distance.
      *
      * Initialises the enumerator given certain values.
-     * The parameter "distanceName" corresponds to the name of the distance.
-     * The parameter "distanceValue" corresponds to the value of the distance.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
 
     TrackDistance (String distanceName, double distanceValue) {
@@ -33,10 +34,10 @@ public enum TrackDistance {
 
 
     /**
-     * Name: getDistanceName
+     * Name: getDistanceName.
      * @return String
      *
-     * Returns the value stored in the distance name.
+     * Returns the name stored in the distance.
      */
 
     public String getDistanceName () {

@@ -2,30 +2,32 @@ import java.util.*;
 
 /**
  * Name: Team
- * It keeps all its cars and pilots.
+ * Keeps all its pilots and cars withing, as well as a map of disqualified pilots.
  *
- * @version 1.0 (12/23/2020) 30/01/21
- * @author Raúl && Eduardo
+ * @version 1.0 (01/30/2021) 30/01/21
+ * @author Raul Hormigo Ceron and Eduardo Cano Garcia
+ *
  */
+
 public class Team {
     private String name;
     private List<Pilot> pilotList;
     private List <Carable> carList;
     private Map <String, Pilot> disqualifiedPilots;
-
     private Comparator pilotSorter;
     private Comparator carSorter;
+
 
     /**
      * Name: Team
      *
-     * @param name: String
+     * @param name is the Team's name.
      *
      * Initialises the attributes from the class given certain values.
-     * The parameter "name" corresponds to the name of the team.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
+
     public Team (String name) {
         setName (name);
         pilotList = new ArrayList <Pilot> ();
@@ -33,88 +35,110 @@ public class Team {
         disqualifiedPilots = new TreeMap <String, Pilot> ();
     }
 
+
     /**
      * Name: getName
      * @return String
      *
      * Returns the name of the team.
      */
-    public String getName() {
+
+    public String getName () {
         return name;
     }
 
+
     /**
      * Name: setTeamName
-     * @param name: String
+     * @param name is the new Team's name.
+     *
      * Sets the given name to the team.
-     * The parameter "teamName" corresponds to the name of the team.
+     *
      * This method returns nothing.
      */
-    public void setName(String name) {
+
+    public void setName (String name) {
         this.name = name;
     }
+
 
     /**
      * Name: getPilotList
      * @return ArrayList <Pilot>
      *
-     * Returns the ArrayList of pilots.
+     * Returns the ArrayList of pilots that belong to the Team.
      */
+
     public List <Pilot> getPilotList () {
         return pilotList;
     }
 
+
     /**
      * Name: setPilotList
-     * @param pilotList: List<Pilot>
-     * Sets the list of pilots of the team.
+     * @param pilotList is the new list of pilots.
+     *
+     * Sets the given list of pilots of the team's one.
+     *
      * This method returns nothing.
      */
+
     public void setPilotList (List <Pilot> pilotList) {
         this.pilotList = pilotList;
     }
 
+
     /**
      * Name: getCarList
-     * @return LinkedList <Car>
+     * @return List <Carabler>
      *
-     * Returns the LinkedList of cars.
+     * Returns the List of cars.
      */
-    public List<Carable> getCarList () {
+
+    public List <Carable> getCarList () {
         return carList;
     }
 
+
     /**
      * Name: setCarList
-     * @param carList: List<Carable>
-     * Sets the given list of cars to the team.
-     * The parameter "carList" corresponds to the list of cars of the team.
+     * @param carList is the new list of cars.
+     *
+     * Sets the given list of cars to the team's one.
+     *
      * This method returns nothing.
      */
-    public void setCarList (List<Carable> carList) {
+
+    public void setCarList (List <Carable> carList) {
         this.carList = carList;
     }
 
+
     /**
      * Name: getDisqualifiedPilots
-     * @return Map<String, Pilot>
+     * @return Map <String, Pilot>
      *
-     * Returns a map which contains a list of the disqualified pilots.
+     * Returns a map which contains a list of the disqualified pilots and their names..
      */
+
     public Map <String, Pilot> getDisqualifiedPilots() {
         return disqualifiedPilots;
     }
 
+
     /**
      * Name: setDisqualifiedPilots
-     * @param disqualifiedPilots: Map<String, Pilot>
-     * Sets the map of the disqualified pilots.
-     * The parameter "disqualifiedPilots" corresponds to the name of the map with the disqualified pilots.
+     * @param disqualifiedPilots is the new Map of pilots.
+     *
+     * Sets the given map of the disqualified pilots to the team's.
+     *
      * This method returns nothing.
      */
+
     public void setDisqualifiedPilots (Map <String, Pilot> disqualifiedPilots) {
         this.disqualifiedPilots = disqualifiedPilots;
     }
+
 
     /**
      * Name: getPilotSorter
@@ -122,19 +146,20 @@ public class Team {
      *
      * Returns a comparator to sort the pilots.
      */
+
     public Comparator getPilotSorter () {
         return pilotSorter;
     }
 
-    //false ascendente, true descendente
+
     /**
      * Name: setPilotSorter
-     * @param pilotSorter: Comparator
-     * @param reverseSorting: boolean
-     * The parameter "pilotSorter" corresponds to the way of sorting the pilots.
-     * The parameter "reverseSorting" is to sort ASC when it is false or DESC when it is true.
+     * @param pilotSorter is the sorting criteria.
+     * @param reverseSorting indicates if it must be reversed (true), or un-reversed (false).
+     *
      * This method returns nothing.
      */
+
     public void setPilotSorter (Comparator pilotSorter, boolean reverseSorting) {
         if (reverseSorting) {
             this.pilotSorter = Collections.reverseOrder (pilotSorter);
@@ -145,33 +170,40 @@ public class Team {
         sortPilots ();
     }
 
+
     /**
      * Name: sortPilots
-     * Sorts the pilots acording to the strategy selected.
+     *
+     * Sorts the pilots according to the sorting criteria that was previously set.
+     *
      * This method returns nothing.
      */
+
     public void sortPilots () {
         Collections.sort (getPilotList (), getPilotSorter ());
     }
+
 
     /**
      * Name: getCarSorter
      * @return Comparator
      *
-     * Returns the comparator for the pilots.
+     * Returns a comparator to sort the team's cars.
      */
+
     public Comparator getCarSorter () {
         return carSorter;
     }
 
+
     /**
      * Name: setCarSorter
-     * @param carSorter: Comparator
-     * @param reverseSorting: boolean
-     * The parameter "carSorter" corresponds to the way of sorting the cars.
-     * The parameter "reverseSorting" is to sort ASC when it is false or DESC when it is true.
+     * @param carSorter is the sorting criteria that was previously set.
+     * @param reverseSorting indicates if the order must be reversed (true) or un-reversed (false).
+     *
      * This method returns nothing.
      */
+
     public void setCarSorter (Comparator carSorter, boolean reverseSorting) {
         if (reverseSorting) {
             this.carSorter = Collections.reverseOrder (carSorter);
@@ -182,31 +214,36 @@ public class Team {
         sortCars ();
     }
 
+
     /**
      * Name: sortCars
-     * Sorts the cars according to the strategy selected.
-     * The parameter "trackName" corresponds to the name of the track.
+     * Sorts the cars according to the sorting criteria selected.
+     *
      * This method returns nothing.
      */
+
     public void sortCars () {
         Collections.sort (getCarList (), getCarSorter ());
     }
 
-    //inscribe la escuderia en el campeonato gestionado por la organizacion
+
     /**
      * Name: register
      * Registers the team in the championship celebrated by the organization
+     *
      * This method returns nothing.
      */
     public void register () {
         Organization.getInstance ().registerTeam (this);
     }
 
+
     /**
      * Name: calculateSumPilotPoints
-     * @return int
+     * @return int is the sum of all the points from all the pilots.
+     *
      * Calculates the total points of a team
-     * This method returns nothing.
+     * This method returns an integer value that corresponds to the sum of all the points from all the pilots.
      */
 
     public int calculateSumPilotPoints () {
@@ -219,10 +256,11 @@ public class Team {
         return sum;
     }
 
+
     /**
      * Name: isDisqualified
-     * @return boolean
-     * Indicates if a team is disqualified.
+     * @return boolean indicates whether a team is disqualified or not.
+     *
      * The boolean result returned is such indicator.
      */
 
@@ -238,11 +276,14 @@ public class Team {
         return result;
     }
 
+
     /**
      * Name: toString
      * @return String
-     * Represents the information from the class in a String.
+     *
+     * Represents the information from the class in a String variable.
      */
+
     @Override
     public String toString () {
         return "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" +
@@ -252,6 +293,14 @@ public class Team {
                 toStringPilotList () + toStringCarList () +
                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
     }
+
+
+    /**
+     * Name: toStringPilotList
+     * @return String
+     *
+     * Represents the entire list of pilots in a String variable.
+     */
 
     public String toStringPilotList () {
         StringBuilder builder = new StringBuilder ();
@@ -266,6 +315,14 @@ public class Team {
         return builder.toString ();
     }
 
+
+    /**
+     * Name: toStringCarList
+     * @return String
+     *
+     * Represents the entire list of cars in a String variable.
+     */
+
     public String toStringCarList () {
         StringBuilder builder = new StringBuilder ();
         if (getCarList ().size () == 0) {
@@ -279,25 +336,28 @@ public class Team {
         return builder.toString ();
     }
 
+
     /**
      * Name: sendPilotsToRace
-     * Sends the pilot with a car to a race if there is a car available.
+     * Sends the pilot with a car to a race if there is any car available.
+     *
      * This method returns nothing.
      */
+
     public void sendPilotsToRace () {
         Pilot p;
         Carable c;
         boolean carSet = false;
         boolean filled = false;
         int counter = 0;
-        sortPilots();//ordering pilots
-        sortCars();//ordering cars
+        sortPilots ();
+        sortCars ();
         Iterator <Pilot> pilotIterator = getPilotList ().iterator ();
         Iterator <Carable> carIterator = getCarList ().iterator ();
 
         while (pilotIterator.hasNext () && (!filled)) {
             p = pilotIterator.next ();
-            if (!p.isDisqualified()) {
+            if (!p.isDisqualified ()) {
                 while ((carIterator.hasNext ()) && (!carSet)) {
                     c = carIterator.next ();
                     if (c.getCurrentFuel () > 0) {
@@ -305,18 +365,18 @@ public class Team {
                         carSet = true;
                     }
                 }
-                if (Organization.getInstance ().getPilotsLimit() > counter) {
-                    if(p.getCar()!=null){
-                        Organization.getInstance().getRacingPilots().add(p);
+                if (Organization.getInstance ().getPilotsLimit () > counter) {
+                    if(p.getCar () != null){
+                        Organization.getInstance ().getRacingPilots ().add (p);
                         carSet = false;
                         counter++;
                     }
                     else{
-                        System.out.println("¡¡¡ "+p.getName()+" is not sent to the race because his team("+
-                                getName()+") does not have more cars with available fuel !!!");
+                        System.out.println ("¡¡¡ "+p.getName ()+" is not sent to the race because their team("+
+                                getName ()+") has no more available cars with fuel !!!");
                     }
                 }
-                if (counter >= Organization.getInstance().getPilotsLimit()) {
+                if (counter >= Organization.getInstance ().getPilotsLimit ()) {
                     filled = true;
                 }
             }
