@@ -14,7 +14,7 @@ public class Organization {
     private Set<Trackable> tracks;//A set for the tracks where the races will be celebrated
     private List<Pilot> racingPilots;//A list for the pilots which will race
     private List<Team> teamList;//A list for the teams which will compete
-    private Map<String, Pilot> disqualifiedPilots;
+    private Map <Pilot, Team> disqualifiedPilots;
 
     /**
      * Name: Organization
@@ -25,7 +25,7 @@ public class Organization {
     private Organization () {
         this.racingPilots = new ArrayList <>();
         this.teamList = new ArrayList <>();
-        this.disqualifiedPilots = new TreeMap<>();
+        this.disqualifiedPilots = new TreeMap <Pilot, Team> (new PilotPointsComparator ().reversed ());
     }
 
     /**
@@ -329,43 +329,42 @@ public class Organization {
         System.out.println("**************************************************");
 
         //cogemos los pilotos de las escuderias y los metemos en una lista
-        List <Pilot> pilotListForPoints = new ArrayList<>();
+
         for(Team t : teamList){
             for(Pilot p : t.getPilotList()){
-                pilotListForPoints.add(p);
+                disqualifiedPilots.put (p, t);
             }
         }//ordenamos la lista
 
-        Collections.sort(pilotListForPoints, new PilotPointsComparator().reversed());//puntos, destreza, nombre.   REVISAR
-        Pilot aux=null;
-        for(int i=0; i<pilotListForPoints.size(); i++){
-            aux=pilotListForPoints.get(i);
-            if(aux.isDisqualified()){
-                disqualifiedPilots.put(aux.getName(), aux);
-            }
-        }//ponemos en el mapa los pilotos descalificados
+        List <Pilot> pilotListForPoints = new ArrayList<>();
 
-        int counter=1;
-        int points=0;
+        for (Pilot p: disqualifiedPilots.keySet ()) {
+            if (!p.isDisqualified()) {
+                pilotListForPoints.add (p);
+            }
+        }
+        Collections.sort (pilotListForPoints, new PilotPointsComparator().reversed ());
+        int counter = 1;
+        int points = 0;
         for(Pilot pil : pilotListForPoints){
-            if(!pil.isDisqualified()){
                 points=pil.getPoints();
                 System.out.println("@@@ Position("+counter+"): "+pil.getName()+" - Total Points: "+points+" @@@");
                 for(Results r : pil.getResults()){
-                    System.out.println("Race ("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");//no se si necesitamos round
+                    System.out.println("Race ("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");
                 }
                 counter++;
                 System.out.println();
-            }
         }
 
         System.out.println("**************************************************");
         System.out.println("************* DISQUALIFIED PILOTS ****************");
         System.out.println("**************************************************");
-        for (Pilot p : disqualifiedPilots.values()){
-            System.out.println("--- Disqualified Pilot: "+p.getName()+" - Total Erased Points:"+p.getPoints()+" ---");
-            for(Results r : p.getResults()){
-                System.out.println("Race("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");
+        for (Pilot aux : disqualifiedPilots.keySet ()) {
+            if (aux.isDisqualified()) {
+                System.out.println("--- Disqualified Pilot: " + aux.getName() + " - Total Erased Points:" + aux.getPoints() + " ---");
+                for (Results r : aux.getResults()) {
+                    System.out.println("Race(" + r.getTrack().getTrackName() + ") - Points:" + r.getPoints() + " - Time:" + r.getTime() + " minutes");
+                }
             }
         }
     }
