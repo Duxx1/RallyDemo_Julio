@@ -208,12 +208,34 @@ public class Team {
      * Calculates the total points of a team
      * This method returns nothing.
      */
+
     public int calculateSumPilotPoints () {
         int sum = 0;
         for (Pilot p: getPilotList ()) {
-            sum += p.getPoints ();
+            if (!p.isDisqualified ()) {
+                sum += p.getPoints ();
+            }
         }
         return sum;
+    }
+
+    /**
+     * Name: isDisqualified
+     * @return boolean
+     * Indicates if a team is disqualified.
+     * The boolean result returned is such indicator.
+     */
+
+    public boolean isDisqualified () {
+        boolean result = true;
+        Pilot p = null;
+        for (int index = 0; (index < getPilotList ().size ()) && (result); index++) {
+            p = getPilotList ().get (index);
+            if (!p.isDisqualified ()) {
+                result = false;
+            }
+        }
+        return result;
     }
 
     /**

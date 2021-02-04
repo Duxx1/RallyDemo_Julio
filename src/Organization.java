@@ -321,11 +321,11 @@ public class Organization {
      */
     //this method shows the final clasification of the pilots
 
-    public void pilotsFinalClasification(){
+    public void pilotsFinalClassification(){
         System.out.println("**************************************************");
         System.out.println("**************** END OF THE CHAMPIONSHIP *********");
         System.out.println("**************************************************");
-        System.out.println("************* PILOTS FINAL CLASIFICATION *********");
+        System.out.println("************* PILOTS FINAL CLASSIFICATION ********");
         System.out.println("**************************************************");
 
         //cogemos los pilotos de las escuderias y los metemos en una lista
@@ -369,6 +369,33 @@ public class Organization {
         }
     }
 
+    public void teamsFinalClassification () {
+        System.out.println ("**************************************************");
+        System.out.println ("********** TEAMS FINAL CLASSIFICATION *************");
+        System.out.println ("**************************************************");
+
+        int teamCounter = 1;
+        for (Team t : getTeamList ()) {
+            if (!t.isDisqualified ()) {
+                System.out.println("@@@ Position(" + teamCounter + ") " + t.getName() + " with " + t.calculateSumPilotPoints() +
+                        " points @@@");
+                System.out.println(t.toString());
+                teamCounter++;
+            }
+        }
+
+        System.out.println ("**************************************************");
+        System.out.println ("************** DISQUALIFIED TEAMS ****************");
+        System.out.println ("**************************************************");
+        for (Team t : getTeamList ()) {
+            if (t.isDisqualified ()) {
+                System.out.println ("¡¡¡ Disqualified team: " + t.getName () +
+                        " with " + t.calculateSumPilotPoints () + " points !!!");
+                System.out.println(t.toString());
+            }
+        }
+    }
+
     /**
      * Name: manageChampionship
      *
@@ -378,6 +405,7 @@ public class Organization {
         showTracks();
         showTeams();
         celebrateRace();
-        pilotsFinalClasification();
+        pilotsFinalClassification();
+        teamsFinalClassification ();
     }
 }
