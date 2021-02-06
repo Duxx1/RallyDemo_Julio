@@ -1,4 +1,31 @@
-public class Pruebas {
+/**
+ * Class that initialises the simulation with the data that ends the competition normally.
+ *
+ * @author profesores DP
+ * @version 20/21
+ */
+
+public class CompleteChampionship {
+
+    /**
+     * Name: CompleteChampionship
+     *
+     * Shows on the terminal information that shoes the competition ends normally.
+     */
+    public CompleteChampionship(){
+        System.out.println("*********************************************************************************************************");
+        System.out.println ("************************THIS SIMULATION ENDS NORMALLY FINISHING ALL THE RACES************************");
+        System.out.println("*********************************************************************************************************");
+    }
+
+    /**
+     * Name: initData
+     *
+     * Sets all the data needed to start the competition
+     */
+    private void initData(){
+
+    }
         public static void main(String[] args) {
             Organization.getInstance ().setLeftLimit (3);
             Organization.getInstance ().setPilotsLimit(2);

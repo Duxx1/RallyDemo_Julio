@@ -1,21 +1,22 @@
 /**
- * Class that initialises the simulation with the data that ends the competition early.
+ * Class that initialises the simulation with the data that ends the competition without winner.
  *
  * @author profesores DP
  * @version 20/21
  */
-public class EarlyEndingData {
+
+public class NoWinnerData {
 
     /**
-     * Name: EarlyEndingData
+     * Name: NoWinnerData
      *
-     * Shows on the terminal information that shows the competition ends early because there was only one not disqualified pilot.
+     * This constructor prints lines informing that the simulation has no winner because all the pilots were disqualified.
      */
 
-    public EarlyEndingData () {
-        System.out.println ("*********************************************************************************************************");
-        System.out.println ("**********THIS SIMULATION FINISHES BEFORE THE CHAMPIONSHIP WITH ONLY ONE NOT DISQUALIFIED PILOT**********");
-        System.out.println ("*********************************************************************************************************\n");
+    public NoWinnerData () {
+        System.out.println("*********************************************************************************************************");
+        System.out.println("**********THIS SIMULATION FINISHES BEFORE THE CHAMPIONSHIP BECAUSE ALL PILOTS WERE DISQUALIFIED**********");
+        System.out.println("*********************************************************************************************************\n");
         initData ();
     }
 
@@ -28,13 +29,13 @@ public class EarlyEndingData {
 
     private void initData () {
         Organization.getInstance ().setLeftLimit (1);
-        Organization.getInstance ().setPilotsLimit (3);
-        Organization.getInstance ().createSetForTracks(new TrackComplexityComparator(), true);//setTrackSorter (new ComplexityTrackSorter (), true);
+        Organization.getInstance ().setPilotsLimit(3);
+        Organization.getInstance ().createSetForTracks(new TrackDistanceComparator(), true);
 
         Trackable Portugal = new Track ("Portugal", TrackComplexity.MEDIUM, TrackDistance.INTERMEDIATE);
         Portugal = new GravelTrack (Portugal);
         Portugal = new NightTrack (Portugal);
-        Organization.getInstance ().getTracks ().add (Portugal);
+        Organization.getInstance ().getTracks ().add(Portugal);
 
         Trackable Cerdena = new Track ("Cerdeña", TrackComplexity.HIGH, TrackDistance.SHORT);
         Cerdena = new GravelTrack (Cerdena);
@@ -71,10 +72,9 @@ public class EarlyEndingData {
         Peugeot.getPilotList ().add (new ExperiencedPilot ("Kankunnen", PilotConcentration.FOCUSED));
         Peugeot.getPilotList ().add (new StarPilot ("Sainz", PilotConcentration.ZEN));
         Peugeot.getPilotList ().add (new RookiePilot ("Sordo", PilotConcentration.CLUELESS));
-        Peugeot.setPilotSorter (new PilotPointsComparator (), true);
-        Peugeot.setPilotSorter (new CarCurrentFuelComparator (), true);
-        Peugeot.register();
-
+        Peugeot.setPilotSorter (new PilotPointsComparator(), true);
+        Peugeot.setPilotSorter (new CarCurrentFuelComparator(), false);
+        Organization.getInstance ().getTeamList ().add (Peugeot);
 
         Team Citroen = new Team ("Citroen");
         Citroen.getCarList ().add (new DurableCar ("Citroen C5", CarSpeed.FAST, CarFuel.ELEPHANT));
@@ -83,9 +83,9 @@ public class EarlyEndingData {
         Citroen.getPilotList ().add (new ExperiencedPilot ("Loeb", PilotConcentration.STANDARD));
         Citroen.getPilotList ().add (new StarPilot ("Makinen", PilotConcentration.ZEN));
         Citroen.getPilotList ().add (new RookiePilot ("Auriol", PilotConcentration.STANDARD));
-        Citroen.setPilotSorter (new PilotPointsComparator (), false);
-        Citroen.setPilotSorter (new CarCurrentFuelComparator (), false);
-        Citroen.register();
+        Citroen.setPilotSorter (new PilotPointsComparator(), false);
+        Citroen.setPilotSorter (new CarCurrentFuelComparator(), false);
+        Organization.getInstance ().getTeamList ().add (Citroen);
 
         Team Seat = new Team ("Seat");
         Seat.getCarList ().add (new DurableCar ("Seat Tarraco", CarSpeed.TURTLE, CarFuel.GENEROUS));
@@ -94,8 +94,10 @@ public class EarlyEndingData {
         Seat.getPilotList ().add (new ExperiencedPilot("Ogier", PilotConcentration.STANDARD));
         Seat.getPilotList ().add (new StarPilot("McRae", PilotConcentration.FOCUSED));
         Seat.getPilotList ().add (new RookiePilot("Blomquist", PilotConcentration.CLUELESS));
-        Seat.setPilotSorter (new PilotPointsComparator (), true);
-        Seat.setCarSorter (new CarCurrentFuelComparator (), true);
-        Seat.register();
+        Seat.setPilotSorter (new PilotPointsComparator(), true);
+        Seat.setCarSorter (new CarCurrentFuelComparator(), false);
+        Organization.getInstance ().getTeamList ().add (Seat);
     }
 }
+
+
