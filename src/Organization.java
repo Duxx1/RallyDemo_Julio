@@ -213,7 +213,11 @@ public class Organization {
      */
     public void celebrateRace(){
         int counter=1;
-        for(Trackable t : tracks){
+        boolean fin=false;
+        Trackable t=null;
+        Iterator<Trackable> it = getTracks().iterator();
+        while(it.hasNext() && !fin){
+            t=it.next();
             System.out.println("*********************************************************************************************************");
             System.out.println("*** RACE<" + counter + "> IN " + t.toString() + "***");
             System.out.println("*********************************************************************************************************");
@@ -222,6 +226,7 @@ public class Organization {
                 System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
                 System.out.println("¡¡¡ This race and next one(s) are not celebrated because there are no more pilots to race !!!!");
                 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                fin=true;
             }
             else{
                 for(Team team : Organization.getInstance().getTeamList()){
@@ -316,6 +321,9 @@ public class Organization {
                         aux.getResults().getLast().getTime()+" minutes - Points: "+
                         aux.getResults().getLast().getPoints() + " @@@");
             }
+            if(points == 2){
+                points += 2;
+            }
             points = points -2;
             counter++;
         }
@@ -323,15 +331,15 @@ public class Organization {
     }
 
     public boolean allPilotsDisqualified(){
-        boolean sol=false;
+        boolean sol=true;
         Team t=null;
         Pilot p=null;
-        for(int i=0; i < getTeamList().size() && !sol; i++){
+        for(int i=0; i < getTeamList().size() && sol; i++){
             t=getTeamList().get(i);
-            for(int j=0; j < t.getPilotList().size() && !sol; j++){
+            for(int j=0; j < t.getPilotList().size() && sol; j++){
                 p=t.getPilotList().get(j);
                 if(!p.isDisqualified()){
-                    sol=true;
+                    sol=false;
                 }
             }
         }
@@ -405,6 +413,12 @@ public class Organization {
         System.out.println ("**************************************************");
         System.out.println ("********** TEAMS FINAL CLASSIFICATION *************");
         System.out.println ("**************************************************");
+
+        if(allPilotsDisqualified()){
+            System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+            System.out.println("¡¡¡ Teams championship declared with no winner because all pilots were disqualified !!!");
+            System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+        }
 
         int teamCounter = 1;
         for (Team t : getTeamList ()) {
