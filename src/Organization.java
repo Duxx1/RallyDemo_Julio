@@ -25,7 +25,7 @@ public class Organization {
     private Organization () {
         this.racingPilots = new ArrayList <>();
         this.teamList = new ArrayList <>();
-        this.disqualifiedPilots = new TreeMap <Pilot, Team> (new PilotPointsComparator ().reversed ());
+        this.disqualifiedPilots = new TreeMap <Pilot, Team> (new DisqualifiedPilotsComparator ().reversed ());
     }
 
     /**
@@ -222,8 +222,6 @@ public class Organization {
                 System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
                 System.out.println("¡¡¡ This race and next one(s) are not celebrated because there are no more pilots to race !!!!");
                 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                pilotsFinalClassification();
-                teamsFinalClassification ();
             }
             else{
                 for(Team team : Organization.getInstance().getTeamList()){
@@ -324,6 +322,22 @@ public class Organization {
         System.out.println();
     }
 
+    public boolean allPilotsDisqualified(){
+        boolean sol=false;
+        Team t=null;
+        Pilot p=null;
+        for(int i=0; i < getTeamList().size() && !sol; i++){
+            t=getTeamList().get(i);
+            for(int j=0; j < t.getPilotList().size() && !sol; j++){
+                p=t.getPilotList().get(j);
+                if(!p.isDisqualified()){
+                    sol=true;
+                }
+            }
+        }
+        return sol;
+    }
+
     /**
      * Name: pilotsFinalClasification
      *
@@ -337,6 +351,12 @@ public class Organization {
         System.out.println("**************************************************");
         System.out.println("************* PILOTS FINAL CLASSIFICATION ********");
         System.out.println("**************************************************");
+
+        if(allPilotsDisqualified()){
+            System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+            System.out.println("¡¡¡ Pilots championship declared with no winner because all pilots were disqualified !!!");
+            System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+        }
 
         //cogemos los pilotos de las escuderias y los metemos en una lista
 
@@ -391,6 +411,10 @@ public class Organization {
             if (!t.isDisqualified ()) {
                 System.out.println("@@@ Position(" + teamCounter + ") " + t.getName() + " with " + t.calculateSumPilotPoints() +
                         " points @@@");
+                //
+                t.sortCars();
+                t.sortPilots();
+                //
                 System.out.println(t.toString());
                 teamCounter++;
             }
