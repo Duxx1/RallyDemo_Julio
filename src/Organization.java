@@ -217,41 +217,51 @@ public class Organization {
             System.out.println("*********************************************************************************************************");
             System.out.println("*** RACE<" + counter + "> IN " + t.toString() + "***");
             System.out.println("*********************************************************************************************************");
-            for(Team team : Organization.getInstance().getTeamList()){
-                team.sendPilotsToRace();
+
+            if(!canStartRace()){
+                System.out.println("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+                System.out.println("¡¡¡ This race and next one(s) are not celebrated because there are no more pilots to race !!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                pilotsFinalClassification();
+                teamsFinalClassification ();
             }
-            Collections.sort(racingPilots, new PilotRaceComparator());//ordering pilots before the race
-            System.out.println("*********************************************************************************************************");
-            System.out.println("******************************** Pilots which will compete in " + t.getTrackName() + " ********************************");
-            System.out.println("***********************************************************************************************************");
-            for(Pilot p : racingPilots){
-                System.out.println(p.toString());
-            }
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            System.out.println("+++++++++++++++++++++++++ Start the race in " + t.getTrackName()+ " +++++++++++++++++++++++++");
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            int numPilot=1;
-            for(Pilot p : racingPilots){
-                System.out.println("@@@ Pilot "+numPilot+" of "+racingPilots.size());
-                System.out.println(p.toString());
-                System.out.println(p.getCar().toString());
-                p.drive(t);
-                if(p.getLeavesNumber() >= getLeftLimit()){
-                    p.setDisqualified(true);
-                    System.out.println("@@@");
-                    System.out.println("¡¡¡ "+p.getName()+" is DISQUALIFIED from the championship for reaching the leftLimit("+getLeftLimit()+") !!!");
-                    System.out.println("@@@");
-                    System.out.println();
+            else{
+                for(Team team : Organization.getInstance().getTeamList()){
+                    team.sendPilotsToRace();
                 }
-                numPilot++;
+                Collections.sort(racingPilots, new PilotRaceComparator());//ordering pilots before the race
+                System.out.println("*********************************************************************************************************");
+                System.out.println("******************************** Pilots which will compete in " + t.getTrackName() + " ********************************");
+                System.out.println("***********************************************************************************************************");
+                for(Pilot p : racingPilots){
+                    System.out.println(p.toString());
+                }
+                System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                System.out.println("+++++++++++++++++++++++++ Start the race in " + t.getTrackName()+ " +++++++++++++++++++++++++");
+                System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                int numPilot=1;
+                for(Pilot p : racingPilots){
+                    System.out.println("@@@ Pilot "+numPilot+" of "+racingPilots.size());
+                    System.out.println(p.toString());
+                    System.out.println(p.getCar().toString());
+                    p.drive(t);
+                    if(p.getLeavesNumber() >= getLeftLimit()){
+                        p.setDisqualified(true);
+                        System.out.println("@@@");
+                        System.out.println("¡¡¡ "+p.getName()+" is DISQUALIFIED from the championship for reaching the leftLimit("+getLeftLimit()+") !!!");
+                        System.out.println("@@@");
+                        System.out.println();
+                    }
+                    numPilot++;
+                }
+                //ordenar de menor a mayor, sacar los de ptos negativos
+                givePointsAfterRace(t);
+                for (Pilot p: getRacingPilots ()) {
+                    p.setCar (null);
+                }
+                racingPilots.clear();
+                counter++;
             }
-            //ordenar de menor a mayor, sacar los de ptos negativos
-            givePointsAfterRace(t);
-            for (Pilot p: getRacingPilots ()) {
-                p.setCar (null);
-            }
-            racingPilots.clear();
-            counter++;
         }
     }
 
@@ -344,16 +354,17 @@ public class Organization {
             }
         }
         Collections.sort (pilotListForPoints, new PilotPointsComparator().reversed ());
+
         int counter = 1;
         int points = 0;
         for(Pilot pil : pilotListForPoints){
                 points=pil.getPoints();
                 System.out.println("@@@ Position("+counter+"): "+pil.getName()+" - Total Points: "+points+" @@@");
                 for(Results r : pil.getResults()){
-                    System.out.println("Race ("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");
+                    System.out.println("Race("+r.getTrack().getTrackName()+") - Points:"+r.getPoints()+" - Time:"+r.getTime()+" minutes");
                 }
-                counter++;
                 System.out.println();
+                counter++;
         }
 
         System.out.println("**************************************************");
@@ -365,6 +376,7 @@ public class Organization {
                 for (Results r : aux.getResults()) {
                     System.out.println("Race(" + r.getTrack().getTrackName() + ") - Points:" + r.getPoints() + " - Time:" + r.getTime() + " minutes");
                 }
+                System.out.println();
             }
         }
     }
@@ -394,6 +406,26 @@ public class Organization {
                 System.out.println(t.toString());
             }
         }
+    }
+
+    public boolean canStartRace(){
+        boolean sol=false;
+        int cont=0;
+        Team t=null;
+        Pilot p=null;
+        for(int i=0; i < getTeamList().size() && !sol; i++){
+            t=getTeamList().get(i);
+            for(int j=0; j < t.getPilotList().size() && !sol; j++){
+                p=t.getPilotList().get(j);
+                if(!p.isDisqualified()){
+                    cont++;
+                }
+                if(cont >= 2){
+                    sol=true;
+                }
+            }
+        }//condition of number of pilots >= 2
+        return sol;
     }
 
     /**

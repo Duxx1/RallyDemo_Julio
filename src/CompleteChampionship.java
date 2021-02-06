@@ -95,6 +95,5 @@ public class CompleteChampionship {
         Citroen.setCarSorter (new CarCurrentFuelComparator(), true);
         Citroen.register();
 
-        Organization.getInstance().manageChampionship();
     }
 }

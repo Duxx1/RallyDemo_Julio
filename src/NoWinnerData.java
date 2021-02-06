@@ -73,7 +73,7 @@ public class NoWinnerData {
         Peugeot.getPilotList ().add (new StarPilot ("Sainz", PilotConcentration.ZEN));
         Peugeot.getPilotList ().add (new RookiePilot ("Sordo", PilotConcentration.CLUELESS));
         Peugeot.setPilotSorter (new PilotPointsComparator(), true);
-        Peugeot.setPilotSorter (new CarCurrentFuelComparator(), false);
+        Peugeot.setCarSorter (new CarCurrentFuelComparator(), false);
         Organization.getInstance ().getTeamList ().add (Peugeot);
 
         Team Citroen = new Team ("Citroen");
@@ -84,7 +84,7 @@ public class NoWinnerData {
         Citroen.getPilotList ().add (new StarPilot ("Makinen", PilotConcentration.ZEN));
         Citroen.getPilotList ().add (new RookiePilot ("Auriol", PilotConcentration.STANDARD));
         Citroen.setPilotSorter (new PilotPointsComparator(), false);
-        Citroen.setPilotSorter (new CarCurrentFuelComparator(), false);
+        Citroen.setCarSorter (new CarCurrentFuelComparator(), false);
         Organization.getInstance ().getTeamList ().add (Citroen);
 
         Team Seat = new Team ("Seat");

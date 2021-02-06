@@ -34,7 +34,7 @@ public class TrackComplexityComparator implements Comparator <Trackable> {
                 return 1;
             }
             else {
-                return 0;
+                return t1.getTrackName().compareTo(t2.getTrackName());
             }
         }
     }
