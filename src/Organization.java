@@ -425,7 +425,8 @@ public class Organization {
             if (!t.isDisqualified ()) {
                 System.out.println("@@@ Position(" + teamCounter + ") " + t.getName() + " with " + t.calculateSumPilotPoints() +
                         " points @@@");
-                //
+
+                t.setPilotSorter (new PilotDisqualifiedComparator (), true);
                 t.sortCars();
                 t.sortPilots();
                 //
