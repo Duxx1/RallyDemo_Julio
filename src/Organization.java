@@ -411,7 +411,7 @@ public class Organization {
 
     public void teamsFinalClassification () {
         System.out.println ("**************************************************");
-        System.out.println ("********** TEAMS FINAL CLASSIFICATION *************");
+        System.out.println ("********** TEAMS FINAL CLASSIFICATION ************");
         System.out.println ("**************************************************");
 
         if(allPilotsDisqualified()){
@@ -425,11 +425,10 @@ public class Organization {
             if (!t.isDisqualified ()) {
                 System.out.println("@@@ Position(" + teamCounter + ") " + t.getName() + " with " + t.calculateSumPilotPoints() +
                         " points @@@");
+                
+                t.setPilotSorter (new PilotDisqualifiedComparator (), false);
+                t.setCarSorter (new CarCurrentFuelComparator (), true);
 
-                t.setPilotSorter (new PilotDisqualifiedComparator (), true);
-                t.sortCars();
-                t.sortPilots();
-                //
                 System.out.println(t.toString());
                 teamCounter++;
             }
@@ -442,6 +441,8 @@ public class Organization {
             if (t.isDisqualified ()) {
                 System.out.println ("¡¡¡ Disqualified team: " + t.getName () +
                         " with " + t.calculateSumPilotPoints () + " points !!!");
+                t.setPilotSorter (new PilotDisqualifiedComparator (), false);
+                t.setCarSorter (new CarCurrentFuelComparator (), true);
                 System.out.println(t.toString());
             }
         }

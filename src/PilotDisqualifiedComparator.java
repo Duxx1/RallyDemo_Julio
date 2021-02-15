@@ -25,10 +25,10 @@ public class PilotDisqualifiedComparator implements Comparator <Pilot> {
         boolean firstValue = p1.isDisqualified ();
         boolean secondValue = p2.isDisqualified ();
         if (firstValue != secondValue) {
-            return 1;
+            return -1;
         }
         else {
-            return 0;
+            return p1.getName ().compareTo (p2.getName ());
         }
     }
 }
