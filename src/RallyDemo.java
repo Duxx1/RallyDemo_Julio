@@ -8,9 +8,9 @@
  */
 public class RallyDemo {
     public static void main(String[] args) {
-        CompleteChampionship completeChampionship = new CompleteChampionship();
+//        CompleteChampionship completeChampionship = new CompleteChampionship();
 //        EarlyEndingData earlyEndingData = new EarlyEndingData();
-//        NoWinnerData noWinnerData = new NoWinnerData();
+        NoWinnerData noWinnerData = new NoWinnerData();
 
         Organization.getInstance().manageChampionship();
     }

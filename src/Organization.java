@@ -425,11 +425,26 @@ public class Organization {
             if (!t.isDisqualified ()) {
                 System.out.println("@@@ Position(" + teamCounter + ") " + t.getName() + " with " + t.calculateSumPilotPoints() +
                         " points @@@");
-                
-                t.setPilotSorter (new PilotDisqualifiedComparator (), false);
+
                 t.setCarSorter (new CarCurrentFuelComparator (), true);
 
-                System.out.println(t.toString());
+                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                System.out.println("%%% "+t.getName()+" %%%");
+
+                for(Pilot p : t.getPilotList()){    //first we show not disqualified pilots
+                    if(!p.isDisqualified())
+                        System.out.println(p.toString());
+                }
+
+                for(Pilot p : t.getPilotList()){    //after that we show disqualified pilots
+                    if(p.isDisqualified())
+                        System.out.println(p.toString());
+                }
+
+                for(Carable c : t.getCarList()){
+                    System.out.println(c.toString());
+                }
+
                 teamCounter++;
             }
         }
@@ -441,7 +456,6 @@ public class Organization {
             if (t.isDisqualified ()) {
                 System.out.println ("¡¡¡ Disqualified team: " + t.getName () +
                         " with " + t.calculateSumPilotPoints () + " points !!!");
-                t.setPilotSorter (new PilotDisqualifiedComparator (), false);
                 t.setCarSorter (new CarCurrentFuelComparator (), true);
                 System.out.println(t.toString());
             }
