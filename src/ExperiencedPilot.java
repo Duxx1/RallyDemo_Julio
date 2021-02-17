@@ -1,53 +1,56 @@
 /**
  * Name: ExperiencedPilot
- * It implements every method an ExperiencedPilot has.
+ * It implements every method an ExperiencedPilot must have.
  *
- * @version 1.0 (12/26/2020) 29/01/21
- * @author Raul Hormigo Ceron and Eduardo Cano Garcia
+ * @version     1.0 (01/29/2021)
+ * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
-public class ExperiencedPilot  extends Pilot{
-
-    private double EXTRA_SKILL_EXPERIENCED = 3;
+public class ExperiencedPilot extends Pilot {
+    private double extraSkill = 3;
 
     /**
      * Name: ExperiencedPilot
      *
-     * @param name: String
-     * @param concentration: Concentration
+     * @param name is the pilot's name.
+     * @param concentration is the pilot's concentration.
      *
      * Initialises the attributes from the class given certain values.
-     * The parameter "pilotName" corresponds to the name of the pilot.
-     * The parameter "car" corresponds to the pilot's car.
-     * The parameter "pilotConcentration" corresponds to the pilot's concentration.
-     * The parameter "disqualified" corresponds to the pilot's disqualified status.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
-    public ExperiencedPilot(String name, PilotConcentration concentration){
-        super(name, concentration);
+
+    public ExperiencedPilot (String name, PilotConcentration concentration){
+        super (name, concentration);
     }
+
 
     /**
      * Name: calculateSkill
      * @return double
      *
-     * Returns the skill from the pilot.
+     * It calculates the pilot's skill.
      */
+
     @Override
-    public double calculateSkill(){
-        return Math.round((((getConcentration().getConcentrationValue() + EXTRA_SKILL_EXPERIENCED) / 130) *1.03) *100d) / 100d;
+    public double calculateSkill () {
+        return Math.round ((((getConcentration ().getConcentrationValue () + extraSkill) / 130) * 1.03) * 100d) / 100d;
     }
+
 
     /**
      * Name: toString
      * @return String
-     * Represents the information of an experienced pilot using a String.
+     *
+     * It represents the information of the class on a String.
+     *
+     * The returned value is the String representation of the class.
      */
+
     @Override
-    public String toString(){   //echarle un ojo al isDisqualified
-        return super.toString() + " <type: Experienced> <skill: " + calculateSkill() + "> " +
-                getConcentration().toString() + "<disqualified: " + isDisqualified() + ">";
+    public String toString () {
+        return super.toString () + " <type: Experienced> <skill: " + calculateSkill () + "> " +
+                getConcentration ().toString () + "<disqualified: " + isDisqualified () + ">";
     }
 
 }

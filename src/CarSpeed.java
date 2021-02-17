@@ -1,12 +1,11 @@
-//29/01/2021
-
 /**
  * Name: CarSpeed
- * The enum used to represent the information of the name an the value of the speed of the cars.
+ * The enumerated is used to represent the information of the name and the value of the speed used on the car.
  *
- * @version     1.0
+ * @version     1.0 (01/29/2021)
  * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
  */
+
 public enum CarSpeed {
     TURTLE ("TURTLE", 200.0),
     SLOW ("SLOW", 210.0),
@@ -17,40 +16,53 @@ public enum CarSpeed {
     private final String speedName;
     private final double speedValue;
 
+
     /**
      * Name: CarSpeed
-     * @param name: String
-     * @param value: double
-     * Initialises the values of the attributes of the enum to the given ones.
+     * @param name is the name of the speed value.
+     * @param value is the value of stored speed.
+     * It initialises the attributes of the class as the given values.
      */
+
     CarSpeed (String name, double value) {
-        this.speedName = name;
-        this.speedValue = value;
+        speedName = name;
+        speedValue = value;
     }
+
 
     /**
      * Name: getName
      * @return String
-     * Returns the value of the attribute speedName.
+     *
+     * Returns the name of stored speed.
      */
+
     public String getName () {
         return speedName;
     }
 
+
     /**
      * Name: getValue
      * @return double
-     * Returns the value of the attribute speedValue.
+     *
+     * Returns the value of stored speed.
      */
+
     public double getValue () {
         return speedValue;
     }
 
+
     /**
      * Name: toString
      * @return String
-     * Represents the information of the enum on a String.
+     *
+     * It represents the information of the class on a String.
+     *
+     * The returned value is the String representation of the class.
      */
+
     @Override
     public String toString () {
         return "<theo_speed: " + getName () + " (" + getValue () + ")> ";

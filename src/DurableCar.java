@@ -1,6 +1,6 @@
 /**
  * Name: DurableCar
- * This class represents a type of car called "DurableCar" that has special features.
+ * This class represents all the information that a durable car must have.
  *
  * @version     1.0
  * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
@@ -11,58 +11,64 @@ public class DurableCar extends Car {
 
     /**
      * Name: DurableCar
-     * @param name: String
-     * @param speed: CarSpeed
-     * @param fuel: CarFuel
-     * The param "name" is the name of the durable car.
-     * The param "speed" is the speed of the car
-     * The param "fuel" is the fuel of the car
+     * @param name is the name of the car.
+     * @param speed is the speed of the car.
+     * @param fuel is the fuel of the car.
      *
-     * Initialises the class to the given attributes.
+     * It initialises the class attributes according to the given ones.
+     *
+     * This method returns nothing.
      */
+
     public DurableCar (String name, CarSpeed speed, CarFuel fuel) {
         super (name, speed, fuel);
         setExtraFuel (100);
     }
 
+
     /**
      * Name: getExtraFuel
      * @return double
      *
-     * Returns the extra fuel of the car.
+     * It returns the extra fuel of the durable car.
      */
+
     public double getExtraFuel () {
         return extraFuel;
     }
 
+
     /**
      * Name: setExtraFuel
-     * @param fuel: double
+     * @param fuel is the fuel of the car.
      *
-     * Sets the extra fuel of the car to the given.
+     * It sets the extra fuel of the car as the given one.
      */
+
     public void setExtraFuel (double fuel) {
         extraFuel = fuel;
     }
 
+
     /**
      * Name: calculateRemainingFuel
-     * @param t: Trackable
-     * @param p: Pilot
-     * @param time: double
      * @return double
+     * @param t is the track where the car races.
+     * @param p is the pilot that drives the car.
+     * @param time is the time that the car takes to race in the track while it is being driven by the pilot.
      *
-     * Calculates the remaining fuel of the car.
+     * It calculates the remaining fuel of the durable car after a race.
+     *
+     * The returned value is that said remaining fuel.
      */
+
     @Override
     public double calculateRemainingFuel (Trackable t, Pilot p, double time) {
         double fuel = getCurrentFuel ();
         if ((getExtraFuel () > 0.0) && (fuel < time)) {
             fuel += getExtraFuel ();
             setExtraFuel (0);
-            //
-            super.setCurrentFuel(fuel);
-            //
+            super.setCurrentFuel (fuel);
             System.out.println ("+++ The " + super.getCarName () + " needs to use the extra tank to keep racing +++");
         }
         else {
@@ -71,15 +77,19 @@ public class DurableCar extends Car {
         return Math.round ((fuel) * 100d) / 100d;
     }
 
+
     /**
      * Name: toString
      * @return String
      *
-     * Represents the information of a durable car on a String.
+     * It represents the information of the class on a String.
+     *
+     * The returned value is the String representation of the class.
      */
+
     @Override
     public String toString () {
         return "<car: " + getCarName () + "> <type: Durable> " + getCarSpeed ().toString ()
-                + getCarFuel ().toString () + "(current: " + Math.round(getCurrentFuel ()*100d)/100d + ")>> <tank: " + Math.round(getExtraFuel ()*100d)/100d + ">";
+                + getCarFuel ().toString () + "(current: " + Math.round(getCurrentFuel ()*100d)/100d + ")>> <tank: " + Math.round (getExtraFuel () * 100d) / 100d + ">";
     }
 }

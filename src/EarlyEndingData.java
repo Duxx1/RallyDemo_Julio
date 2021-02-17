@@ -1,20 +1,21 @@
 /**
- * Class that initialises the simulation with the data that ends the competition early.
+ * The class that initialises the program with all the necessary data in order to let the championship end sooner because there is only one pilot left.
  *
  * @author profesores DP
  * @version 20/21
  */
+
 public class EarlyEndingData {
 
     /**
-     * Name: EarlyEndingData
+     * Name: CompleteChampionship
      *
-     * Shows on the terminal information that shows the competition ends early because there was only one not disqualified pilot.
+     * It shows on the console the title for this simulation and initialises the data.
      */
 
     public EarlyEndingData () {
         System.out.println ("*********************************************************************************************************");
-        System.out.println ("**********THIS SIMULATION FINISHES BEFORE THE CHAMPIONSHIP WITH ONLY ONE NOT DISQUALIFIED PILOT**********");
+        System.out.println ("*******************THIS SIMULATION FINISHES EARLY WITH ONLY ONE NOT-DISQUALIFIED PILOT*******************");
         System.out.println ("*********************************************************************************************************\n");
         initData ();
     }
@@ -23,13 +24,13 @@ public class EarlyEndingData {
     /**
      * Name: initData
      *
-     * Sets all the data needed to start the competition
+     * It sets all the data needed to start the competition in order to finish the championship early.
      */
 
     private void initData () {
         Organization.getInstance ().setLeftLimit (1);
         Organization.getInstance ().setPilotsLimit (3);
-        Organization.getInstance ().createSetForTracks(new TrackComplexityComparator(), true);
+        Organization.getInstance ().createSetForTracks (new TrackComplexityComparator (), true);
 
         Trackable Portugal = new Track ("Portugal", TrackComplexity.MEDIUM, TrackDistance.INTERMEDIATE);
         Portugal = new GravelTrack (Portugal);
@@ -68,12 +69,12 @@ public class EarlyEndingData {
         Seat.getCarList ().add (new DurableCar ("Seat Tarraco", CarSpeed.TURTLE, CarFuel.GENEROUS));
         Seat.getCarList ().add (new FastCar ("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS));
         Seat.getCarList ().add (new Car ("Seat Arona", CarSpeed.FAST, CarFuel.LIMITED));
-        Seat.getPilotList ().add (new ExperiencedPilot("Ogier", PilotConcentration.STANDARD));
-        Seat.getPilotList ().add (new StarPilot("McRae", PilotConcentration.FOCUSED));
-        Seat.getPilotList ().add (new RookiePilot("Blomquist", PilotConcentration.CLUELESS));
+        Seat.getPilotList ().add (new ExperiencedPilot ("Ogier", PilotConcentration.STANDARD));
+        Seat.getPilotList ().add (new StarPilot ("McRae", PilotConcentration.FOCUSED));
+        Seat.getPilotList ().add (new RookiePilot ("Blomquist", PilotConcentration.CLUELESS));
         Seat.setPilotSorter (new PilotPointsComparator (), true);
         Seat.setCarSorter (new CarCurrentFuelComparator (), true);
-        Seat.register();
+        Seat.register ();
 
         Team Peugeot = new Team ("Peugeot");
         Peugeot.getCarList ().add (new DurableCar ("Peugeot 5008", CarSpeed.SLOW, CarFuel.GENEROUS));
@@ -84,7 +85,7 @@ public class EarlyEndingData {
         Peugeot.getPilotList ().add (new RookiePilot ("Sordo", PilotConcentration.CLUELESS));
         Peugeot.setPilotSorter (new PilotPointsComparator (), true);
         Peugeot.setCarSorter (new CarCurrentFuelComparator (), true);
-        Peugeot.register();
+        Peugeot.register ();
 
         Team Citroen = new Team ("Citroen");
         Citroen.getCarList ().add (new DurableCar ("Citroen C5", CarSpeed.FAST, CarFuel.ELEPHANT));
@@ -95,6 +96,6 @@ public class EarlyEndingData {
         Citroen.getPilotList ().add (new RookiePilot ("Auriol", PilotConcentration.STANDARD));
         Citroen.setPilotSorter (new PilotPointsComparator (), false);
         Citroen.setCarSorter (new CarCurrentFuelComparator (), false);
-        Citroen.register();
+        Citroen.register ();
     }
 }

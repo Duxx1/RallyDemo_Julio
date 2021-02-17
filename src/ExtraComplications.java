@@ -1,23 +1,22 @@
 /**
  * Name: TrackDecorator
- * Helps wrap a regular Track with extra features.
+ * It helps to complete the Decorator Design Pattern.
  *
- * @version 1.0 (12/23/2020) 29/01/21
- * @author Raul Hormigo Ceron and Eduardo Cano Garcia
+ * @version     1.0 (01/29/2021)
+ * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
-public abstract class ExtraComplications implements Trackable{
+public abstract class ExtraComplications implements Trackable {
     protected Trackable decoratedTrack = null;
+
 
     /**
      * Name: TrackDecorator
-     *
-     * @param track: Trackable
+     * @param track is the track that will be decorated.
      *
      * Initialises the attributes from the class given certain values.
-     * The parameter "track" corresponds to the track that will be decorated.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
 
     public ExtraComplications (Trackable track) {
@@ -29,12 +28,12 @@ public abstract class ExtraComplications implements Trackable{
      * Name: getTrackName
      * @return String
      *
-     * Returns the name of the track.
+     * It returns the name of the track.
      */
 
     @Override
     public String getTrackName () {
-        return decoratedTrack.getTrackName();
+        return decoratedTrack.getTrackName ();
     }
 
 
@@ -42,7 +41,7 @@ public abstract class ExtraComplications implements Trackable{
      * Name: getTrackComplexity
      * @return TrackComplexity
      *
-     * Returns the complexity of the track.
+     * It returns the complexity of the track.
      */
 
     @Override
@@ -55,7 +54,7 @@ public abstract class ExtraComplications implements Trackable{
      * Name: getTrackDistance
      * @return TrackDistance
      *
-     * Returns the distance of the track.
+     * It returns the distance of the track.
      */
 
     @Override
@@ -67,7 +66,8 @@ public abstract class ExtraComplications implements Trackable{
     /**
      * Name: calculateComplexity
      * @return double
-     * Returns the complexity value.
+     *
+     * It returns the complexity value.
      */
 
     @Override
@@ -79,7 +79,8 @@ public abstract class ExtraComplications implements Trackable{
     /**
      * Name: calculateDistance
      * @return double
-     * Returns the distance value.
+     *
+     * It returns the distance value.
      */
 
     @Override
@@ -91,7 +92,8 @@ public abstract class ExtraComplications implements Trackable{
     /**
      * Name: conditionString
      * @return String
-     * Returns a String indicating the applied conditions.
+     *
+     * It returns a String indicating the applied conditions.
      */
 
     @Override
@@ -104,11 +106,13 @@ public abstract class ExtraComplications implements Trackable{
      * Name: toString
      * @return String
      *
-     * Returns a String representation of the information stored in the track.
+     * It represents the information of the class on a String.
+     *
+     * The returned value is the String representation of the class.
      */
 
     @Override
     public String toString () {
-        return decoratedTrack.toString();
+        return decoratedTrack.toString ();
     }
 }

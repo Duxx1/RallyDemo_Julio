@@ -1,24 +1,23 @@
 /**
  * Name: NightTrack
- * Stores all the features necessary for a Night-decorated Track.
+ * It stores all the features necessary for a Night-decorated Track.
  *
- * @version 1.0 (12/23/2020) 20/01/21
+ * @version 1.0
  * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
-public class NightTrack extends ExtraComplications{
+public class NightTrack extends ExtraComplications {
     private final double complexityFactor = 1.2;
     private final double distanceFactor = 0.8;
 
+
     /**
      * Name: NightTrack
+     * @param track is the track that will be decorated.
      *
-     * @param track: Trackable
+     * It initialises the attributes from the class given certain values.
      *
-     * Initialises the attributes from the class given certain values.
-     * The parameter "trackable" corresponds to the track that will be decorated.
-     *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
 
     public NightTrack (Trackable track) {
@@ -30,7 +29,7 @@ public class NightTrack extends ExtraComplications{
      * Name: calculateComplexity
      * @return double
      *
-     * Calculates the currentComplexity applying a Night-decorated track complexity factor.
+     * It calculates the currentComplexity applying a Night-decorated track complexity factor.
      */
 
     @Override
@@ -43,7 +42,7 @@ public class NightTrack extends ExtraComplications{
      * Name: calculateDistance
      * @return double
      *
-     * Changes the currentDistance applying a Night-decorated track distance factor.
+     * It calculates the currentDistance applying a Night-decorated track distance factor.
      */
 
     @Override
@@ -55,7 +54,10 @@ public class NightTrack extends ExtraComplications{
     /**
      * Name: conditionString
      * @return String
-     * Returns a String indicating the applied conditions.
+     *
+     * It returns a String indicating the applied conditions.
+     *
+     * The returned String is an explanation of all the applied conditions.
      */
 
     @Override
@@ -68,12 +70,14 @@ public class NightTrack extends ExtraComplications{
      * Name: toString
      * @return String
      *
-     * Returns a String representation of the information stored in the track.
+     * It represents the information of the class on a String.
+     *
+     * The returned value is the String representation of the class.
      */
 
     @Override
     public String toString () {
-        return "<track: " + super.getTrackName() + "> <cond:" + conditionString() + "> <comp: " + getTrackComplexity ().toString () + " (current: "
+        return "<track: " + super.getTrackName () + "> <cond:" + conditionString () + "> <comp: " + getTrackComplexity ().toString () + " (current: "
                 + calculateComplexity () + ")> <dist: " + getTrackDistance ().toString () + " (current: " + calculateDistance () + ")>";
     }
 }

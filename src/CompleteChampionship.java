@@ -1,5 +1,5 @@
 /**
- * Class that initialises the simulation with the data that ends the competition normally.
+ * The class that initialises the program with all the necessary data in order to let the championship end normally.
  *
  * @author profesores DP
  * @version 20/21
@@ -10,24 +10,27 @@ public class CompleteChampionship {
     /**
      * Name: CompleteChampionship
      *
-     * Shows on the terminal information that shoes the competition ends normally.
+     * It shows on the console the title for this simulation and initialises the data.
      */
-    public CompleteChampionship(){
-        System.out.println("*********************************************************************************************************");
-        System.out.println("**************************THIS SIMULATION ENDS NORMALLY FINISHING ALL THE RACES**************************");
-        System.out.println("*********************************************************************************************************\n");
-        initData();
+
+    public CompleteChampionship () {
+        System.out.println ("*********************************************************************************************************");
+        System.out.println ("**************************THIS SIMULATION ENDS NORMALLY AS ALL THE RACES FINISH**************************");
+        System.out.println ("*********************************************************************************************************\n");
+        initData ();
     }
+
 
     /**
      * Name: initData
      *
-     * Sets all the data needed to start the competition
+     * It sets all the data needed to start the competition in order to finish the championship normally.
      */
-    private void initData(){
+
+    private void initData () {
         Organization.getInstance ().setLeftLimit (3);
-        Organization.getInstance ().setPilotsLimit(2);
-        Organization.getInstance ().createSetForTracks(new TrackDistanceComparator(), true);
+        Organization.getInstance ().setPilotsLimit (2);
+        Organization.getInstance ().createSetForTracks (new TrackDistanceComparator (), true);
 
         Trackable Portugal = new Track ("Portugal", TrackComplexity.MEDIUM, TrackDistance.INTERMEDIATE);
         Portugal = new GravelTrack (Portugal);
@@ -66,12 +69,12 @@ public class CompleteChampionship {
         Seat.getCarList ().add (new DurableCar ("Seat Tarraco", CarSpeed.TURTLE, CarFuel.GENEROUS));
         Seat.getCarList ().add (new FastCar ("Seat Ateca", CarSpeed.CHEETAH, CarFuel.GENEROUS));
         Seat.getCarList ().add (new Car ("Seat Arona", CarSpeed.FAST, CarFuel.LIMITED));
-        Seat.getPilotList ().add (new ExperiencedPilot("Ogier", PilotConcentration.STANDARD));
-        Seat.getPilotList ().add (new StarPilot("McRae", PilotConcentration.FOCUSED));
-        Seat.getPilotList ().add (new RookiePilot("Blomquist", PilotConcentration.CLUELESS));
-        Seat.setPilotSorter (new PilotPointsComparator(), false);
-        Seat.setCarSorter (new CarCurrentFuelComparator(), false);
-        Seat.register();
+        Seat.getPilotList ().add (new ExperiencedPilot ("Ogier", PilotConcentration.STANDARD));
+        Seat.getPilotList ().add (new StarPilot ("McRae", PilotConcentration.FOCUSED));
+        Seat.getPilotList ().add (new RookiePilot ("Blomquist", PilotConcentration.CLUELESS));
+        Seat.setPilotSorter (new PilotPointsComparator (), false);
+        Seat.setCarSorter (new CarCurrentFuelComparator (), false);
+        Seat.register ();
 
         Team Peugeot = new Team ("Peugeot");
         Peugeot.getCarList ().add (new DurableCar ("Peugeot 5008", CarSpeed.SLOW, CarFuel.GENEROUS));
@@ -79,10 +82,10 @@ public class CompleteChampionship {
         Peugeot.getCarList ().add (new Car ("Peugeot 2008", CarSpeed.AVERAGE, CarFuel.LIMITED));
         Peugeot.getPilotList ().add (new ExperiencedPilot ("Kankunnen", PilotConcentration.FOCUSED));
         Peugeot.getPilotList ().add (new StarPilot ("Sainz", PilotConcentration.ZEN));
-        Peugeot.getPilotList ().add (new RookiePilot("Sordo", PilotConcentration.CLUELESS));
-        Peugeot.setPilotSorter (new PilotPointsComparator(), false);
-        Peugeot.setCarSorter (new CarCurrentFuelComparator(), false);
-        Peugeot.register();
+        Peugeot.getPilotList ().add (new RookiePilot ("Sordo", PilotConcentration.CLUELESS));
+        Peugeot.setPilotSorter (new PilotPointsComparator (), false);
+        Peugeot.setCarSorter (new CarCurrentFuelComparator (), false);
+        Peugeot.register ();
 
         Team Citroen = new Team ("Citroen");
         Citroen.getCarList ().add (new DurableCar ("Citroen C5", CarSpeed.FAST, CarFuel.ELEPHANT));
@@ -91,9 +94,8 @@ public class CompleteChampionship {
         Citroen.getPilotList ().add (new ExperiencedPilot ("Loeb", PilotConcentration.STANDARD));
         Citroen.getPilotList ().add (new StarPilot ("Makinen", PilotConcentration.ZEN));
         Citroen.getPilotList ().add (new RookiePilot ("Auriol", PilotConcentration.STANDARD));
-        Citroen.setPilotSorter (new PilotPointsComparator(), true);
-        Citroen.setCarSorter (new CarCurrentFuelComparator(), true);
-        Citroen.register();
-
+        Citroen.setPilotSorter (new PilotPointsComparator (), true);
+        Citroen.setCarSorter (new CarCurrentFuelComparator (), true);
+        Citroen.register ();
     }
 }

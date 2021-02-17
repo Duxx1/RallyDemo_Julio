@@ -1,6 +1,6 @@
 /**
  * Name: Carable
- * The interface that is implemented on the class car and that contains methods for the cars.
+ * This interface contains all the methods that a car must have. It is necessary for the Strategy Design Pattern.
  *
  * @version     1.0
  * @author      Raul Hormigo Ceron and Eduardo Cano Garcia

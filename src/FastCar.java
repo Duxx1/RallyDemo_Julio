@@ -1,9 +1,9 @@
 /**
  * Name: FastCar
- * This class represents all the information that a fast car must store.
+ * This class represents all the information that a fast car must have.
  *
- * @version      1.0
- * @author       Raul Hormigo Ceron and Eduardo Cano Garcia
+ * @version     1.0
+ * @author      Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
 public class FastCar extends Car {
@@ -11,51 +11,56 @@ public class FastCar extends Car {
 
     /**
      * Name: FastCar
+     * @param name is the name of the car.
+     * @param speed is the speed of the car.
+     * @param fuel is the fuel of the car.
      *
-     * @param name: String
-     * @param speed: CarSpeed
-     * @param fuel: CarFuel
+     * It initialises the class attributes according to the given ones.
      *
-     * Initialises the attributes from the class given certain values.
-     * The parameter "name" corresponds to the name of the fast car.
-     * The parameter "speed" corresponds to the speed of the fast car.
-     * The parameter "fuel" corresponds to the fuel of the fast car.
-     *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
+
     public FastCar (String name, CarSpeed speed, CarFuel fuel) {
         super (name, speed, fuel);
         setNitro (80.0);
     }
 
+
     /**
      * Name: getNitro
      * @return double
      *
-     * Returns the nitro of the fast car.
+     * It returns the nitro of the fast car.
      */
+
     public double getNitro () {
         return nitro;
     }
 
+
     /**
      * Name: setNitro
-     * @param nitro: double
-     * Sets the given nitro to the fast car.
-     * The parameter "nitro" corresponds to the nitro of the fast car.
+     * @param _nitro: double
+     *
+     * It sets the given nitro to the fast car.
+     *
      * This method returns nothing.
      */
-    public void setNitro (double nitro) {
-        this.nitro = nitro;
+
+    public void setNitro (double _nitro) {
+        nitro = _nitro;
     }
+
 
     /**
      * Name: calculateRealSpeed
-     * @param t: Trackable
-     * @param p: Pilot
      * @return double.
-     * Calculates the real speed of a pilot in a track using this fast car.
+     * @param t is the track where the car races.
+     * @param p is the pilot that drives the car.
+     *
+     * It calculates the real speed of a car in the track while it is being drive by a pilot.
      */
+
     @Override
     public double calculateRealSpeed (Trackable t, Pilot p) {
         double realSpeed = super.calculateRealSpeed (t, p);
@@ -78,15 +83,19 @@ public class FastCar extends Car {
         return realSpeed;
     }
 
+
     /**
      * Name: toString
      * @return String
      *
-     * Returns a String representation of the information stored in the fast car.
+     * It represents the information of the class on a String.
+     *
+     * The returned value is the String representation of the class.
      */
+
     @Override
     public String toString () {
         return "<car: " + getCarName () + "> <type: Fast> " + getCarSpeed ().toString ()
-                + getCarFuel ().toString () + "(current: " + Math.round(getCurrentFuel ()*100d)/100d + ")>> <remaining nitro: " + Math.round(getNitro ()*100d)/100d + ">";
+                + getCarFuel ().toString () + "(current: " + Math.round (getCurrentFuel () * 100d) / 100d + ")>> <remaining nitro: " + Math.round (getNitro () * 100d) / 100d + ">";
     }
 }

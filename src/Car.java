@@ -15,18 +15,16 @@ public class Car implements Carable {
 
     /**
      * Name: Car
-     *
-     * @param name: String
-     * @param speed: CarSpeed
-     * @param fuel: CarFuel
+     * @return Car
+     * @param name is the name of the car.
+     * @param speed is the speed of the car.
+     * @param fuel is the fuel of the car.
      *
      * Initialises the attributes from the class given certain values.
-     * The parameter "name" corresponds to the name of the car.
-     * The parameter "speed" corresponds to the speed of the car.
-     * The parameter "fuel" corresponds to the fuel of the car.
      *
      * This method returns nothing since it is the class constructor.
      */
+
     public Car (String name, CarSpeed speed, CarFuel fuel) {
         setCarName (name);
         setCarSpeed (speed);
@@ -34,72 +32,88 @@ public class Car implements Carable {
         setCurrentFuel (getCarFuel ().getValue ());
     }
 
+
     /**
-    *Name: getCarName
+     * Name: getCarName
      * @return String
      *
      * Returns the name of the car.
     */
+
     @Override
     public String getCarName () {
         return name;
     }
 
+
     /**
      * Name: setCarName
-     * @param name: String
-     * The parameter "name" is the name that will be assigned to the car.
-     * This method sets the name of the car to the given.
+     * @param _name is the name of the car
+     * It sets the name of the car as the one given.
+     *
+     * This method returns nothing.
      */
+
     @Override
-    public void setCarName (String name) {
-        this.name = name;
+    public void setCarName (String _name) {
+        name = _name;
     }
+
 
     /**
      * Name: getCarSpeed
      * @return CarSpeed
      *
-     * Returns the enum used for the speed of the cars.
+     * It returns the value of the speed of the car.
      */
+
     @Override
     public CarSpeed getCarSpeed () {
         return speed;
     }
 
+
     /**
      * Name: setCarSpeed
-     * @param speed: CarSpeed
-     * The parameter "speed" is the enum type of the speed of the cars.
-     * This method sets the speed to the enum type given.
+     * @param _speed is the speed of the car.
+     * It sets the speed of the car as the one given.
+     *
+     * This method returns nothing.
      */
+
     @Override
-    public void setCarSpeed (CarSpeed speed) {
-        this.speed = speed;
+    public void setCarSpeed (CarSpeed _speed) {
+        speed = _speed;
     }
+
 
     /**
      * Name: getCarFuel
      * @return CarFuel
      *
-     * This method returns the enum type of the fuel of the car.
+     * This method returns the fuel of the car.
      */
+
     @Override
     public CarFuel getCarFuel () {
         return fuel;
     }
 
+
     /**
      * Name: setCarFuel
-     * @param fuel: CarFuel
-     * The param "fuel" is the enum type used for the fuel of the car.
+     * @param _fuel is the fuel of the car.
      *
-     * This method sets the car fuel to the given.
+     * It sets the car fuel as the one given.
+     *
+     * This method returns nothing.
      */
+
     @Override
-    public void setCarFuel (CarFuel fuel) {
-        this.fuel = fuel;
+    public void setCarFuel (CarFuel _fuel) {
+        fuel = _fuel;
     }
+
 
     /**
      * Name: getCurrentFuel
@@ -107,33 +121,39 @@ public class Car implements Carable {
      *
      * This method returns the current fuel of the car
      */
+
     @Override
     public double getCurrentFuel () {
         return currentFuel;
     }
 
+
     /**
      * Name: setCurrentFuel
-     * @param fuel: double
-     * The param "fuel" is the fuel you want to set to the car.
+     * @param _fuel is the fuel of the car.
      *
-     * This method sets the current fuel of the car to the given.
+     * It sets the current fuel of the car as the one given.
+     *
+     * This method returns nothing.
      */
+
     @Override
-    public void setCurrentFuel (double fuel) {
-        this.currentFuel = fuel;
+    public void setCurrentFuel (double _fuel) {
+        currentFuel = _fuel;
     }
+
 
     /**
      * Name: calculateRealSpeed
-     * @param t: Trackable
-     * @param p: Pilot
      * @return double
-     * The param "t" is the interface used for tracks.
-     * The param "p" is the pilot that will drive.
+     * @param t is the track where the car races.
+     * @param p is the pilot that drives the car.
      *
-     * This method calculates the real speed the car will reach on a circuit being driven by a pilot.
+     * It calculates the real speed the car will reach on a track while it is being driven by a pilot.
+     *
+     * The returned value is that said real speed.
      */
+
     @Override
     public double calculateRealSpeed (Trackable t, Pilot p) {
         double realSpeed = Math.round (((getCarSpeed ().getValue () * p.calculateSkill ()) / t.calculateComplexity ()) * 100d) / 100d;
@@ -141,46 +161,53 @@ public class Car implements Carable {
         return realSpeed;
     }
 
+
     /**
      * Name: calculateTime
-     * @param t: Trackable
-     * @param p: Pilot
      * @return double
-     * The param "t" is the interface used for tracks.
-     * The param "p" is the pilot that will drive.
+     * @param t is the track where the car races.
+     * @param p is the pilot that drives the car.
      *
-     * This method calculates the time that the car will be racing on a track being driven by a pilot.
+     * It calculates the time while the car will be racing on a track while it is being driven by a pilot.
+     *
+     * The returned value is that said time.
      */
+
     @Override
     public double calculateTime (Trackable t, Pilot p) {
         return Math.round (((t.calculateDistance () / calculateRealSpeed (t, p)) * 60) * 100d) / 100d;
     }
 
+
     /**
      * Name: calculateRemainingFuel
-     * @param t: Trackable
-     * @param p: Pilot
-     * @param time: double
      * @return double
-     * The param "t" is the interface used for tracks
-     * The param "p" is the pilot that will drive.
-     * The param "time" is the time that the car will be racing.
+     * @param t is the track where the car races.
+     * @param p is the pilot that drives the car.
+     * @param time is the time that the car takes to race in the track while it is being driven by the pilot.
+     *
+     * It calculates the remaining fuel that the car will have after racing in a certain track for a certain time and while it had been driven by a certain pilot.
      */
+
     @Override
     public double calculateRemainingFuel (Trackable t, Pilot p, double time) {
         return Math.round ((getCurrentFuel () - time) * 100d) / 100d;
     }
 
+
     /**
      * Name: toString
      * @return String
      *
-     * Represents the information of the class on a String.
+     * It represents the information of the class on a String.
+     *
+     * The returned value is a String representation of the class.
      */
+
     @Override
     public String toString () {
         return "<car: " + getCarName () + "> <type: Normal> " + getCarSpeed ().toString ()
-                + getCarFuel ().toString () + "(current: " + getCurrentFuel () + ")>>";
+                + getCarFuel ().toString () + "(current: " + getCurrentFuel () + ")>";
     }
 }
 

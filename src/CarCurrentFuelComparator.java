@@ -16,17 +16,23 @@ public class CarCurrentFuelComparator implements Comparator <Carable> {
      * @param c1 is the first car to be compared.
      * @param c2 is the second car to be compared.
      *
-     * Compares two cars based on their current fuel values.
+     * It compares two cars based on their current fuel values.
      *
+     * The returned value are 1, -1 or sorted by their names according to their current fuel values.
      */
 
     @Override
     public int compare (Carable c1, Carable c2) {
-        if(c1.getCurrentFuel() == c2.getCurrentFuel())
-            return (c1.getCarName().compareTo(c2.getCarName()));
-        else if(c1.getCurrentFuel() > c2.getCurrentFuel())
-            return 1;
-        else
-            return -1;
+        if (c1.getCurrentFuel() == c2.getCurrentFuel()) {
+            return (c1.getCarName ().compareTo (c2.getCarName ()));
+        }
+        else {
+            if (c1.getCurrentFuel () > c2.getCurrentFuel ()) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
     }
 }
