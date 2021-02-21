@@ -1,5 +1,5 @@
 /**
- * Class that initialises the simulation with the data that ends the competition without winner.
+ * The class that initialises the program with all the necessary data in order to finish the championship without a winner.
  *
  * @author profesores DP
  * @version 20/21
@@ -8,9 +8,9 @@
 public class NoWinnerData {
 
     /**
-     * Name: NoWinnerData
+     * Name: CompleteChampionship
      *
-     * This constructor prints lines informing that the simulation has no winner because all the pilots were disqualified.
+     * It shows on the console the title for this simulation and initialises the data.
      */
 
     public NoWinnerData () {
