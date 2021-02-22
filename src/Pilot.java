@@ -323,7 +323,7 @@ import java.util.LinkedList;
          * @return Results
          *
          * It returns the result of a pilot in a given track.
-         */
+         *//*
 
         public Results getResult (String name) {
             boolean enc = false;
@@ -334,5 +334,5 @@ import java.util.LinkedList;
                     enc = true;
             }
             return r;
-        }
+        }*/
     }
