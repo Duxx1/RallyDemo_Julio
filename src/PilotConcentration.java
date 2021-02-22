@@ -2,7 +2,7 @@
  * Name: PilotConcentration
  * This enumerator stores the different values of concentration that a pilot can possess (clueless, standard, focused or zen).
  *
- * @version 1.0 (12/24/2020) 29/01/21
+ * @version 1.0 (01/29/2021)
  * @author Raul Hormigo Ceron and Eduardo Cano Garcia
  */
 
@@ -17,19 +17,17 @@ public enum PilotConcentration {
 
     /**
      * Name: PilotConcentration
-     * @param concentrationName: String
-     * @param concentrationValue: double
+     * @param newConcentrationName is the name of the concentration status.
+     * @param newConcentrationValue is the value of the concentration status.
      *
-     * Initialises the enumerator given certain values.
-     * The parameter "concentrationName" corresponds to the name of the fuel.
-     * The parameter "concentrationValue" corresponds to the value of the fuel.
+     * It tnitialises the enumerator given certain values.
      *
-     * This method returns nothing since it is the class constructor.
+     * This method returns nothing.
      */
 
-    PilotConcentration (String concentrationName, double concentrationValue) {
-        this.concentrationName = concentrationName;
-        this.concentrationValue = concentrationValue;
+    PilotConcentration (String newConcentrationName, double newConcentrationValue) {
+        concentrationName = newConcentrationName;
+        concentrationValue = newConcentrationValue;
     }
 
 
@@ -37,7 +35,7 @@ public enum PilotConcentration {
      * Name: getConcentrationName
      * @return String
      *
-     * Returns the concentration name from its pilot.
+     * It returns the concentration name from its pilot.
      */
 
     public String getConcentrationName () {
@@ -49,7 +47,7 @@ public enum PilotConcentration {
      * Name: getConcentrationValue
      * @return String
      *
-     * Returns the concentration value from its pilot.
+     * It returns the concentration value from its pilot.
      */
 
     public double getConcentrationValue () {
@@ -61,7 +59,7 @@ public enum PilotConcentration {
      * Name: toString
      * @return String
      *
-     * Returns a String representation of the information stored in the PilotConcentration.
+     * It returns a String representation of the information stored in the class.
      */
 
     @Override

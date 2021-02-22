@@ -24,7 +24,7 @@ public class NoWinnerData {
     /**
      * Name: initData
      *
-     * Sets all the data needed to start the competition
+     * It sets all the data needed to start the competition.
      */
 
     private void initData () {

@@ -1,217 +1,240 @@
-import java.util.*;
+import java.util.LinkedList;
+
     /**
      * Name: Pilot
-     * This class represents all the info a Pilot must have
+     * This class represents all the information a Pilot must store
      *
-     * @version 1.0 (12/24/2020) 29/01/21
+     * @version 1.0 (01/29/2021)
      * @author Raul Hormigo Ceron and Eduardo Cano Garcia
      */
+
+
     public abstract class Pilot {
         private String name;
         private Carable car;
-        protected PilotConcentration concentration; //the enum type
-        private LinkedList<Results> results; //Preguntar en tutoría si el tipo estático puede ser LinkedList, ya que si no lo usamos (solo el dinámico es LinkedList)
-                                             // no nos deja acceder al getLast de las LinkedList (usado en PilotLastTimeComparator, y en la asignación de puntos despúes de una carrera, reduciendo el orden de complejidad)
+        protected PilotConcentration concentration;
+        private LinkedList <Results> results;
         private boolean disqualified;
-        private int leavesNumber;   //es el numero de abandonos
-        private int finishedRacesNumber;    //numero de carreras terminadas
+        private int leavesNumber;
+        private int finishedRacesNumber;
+
 
         /**
          * Name: Pilot
          *
-         * @param name: String
-         * @param concentration: PilotConcentration
+         * @param pilotName is the pilot's name.
+         * @param pilotConcentration is the pilot's concentration vale.
+         * It initialises the attributes from the class given certain values.
          *
-         * Initialises the attributes from the class given certain values.
-         * The parameter "name" corresponds to the name of the pilot.
-         * The parameter "concentration" corresponds to the concentration of the pilot.
-         *
-         * This method returns nothing since it is the class constructor.
+         * This method returns nothing.
          */
-        public Pilot(String name, PilotConcentration concentration){
-            this.name=name;
-            this.concentration=concentration;
-            this.disqualified=false;
-            setCar(null);
-            this.results=new LinkedList<Results>();
-            this.leavesNumber=0;
-            this.finishedRacesNumber=0;
+
+        public Pilot (String pilotName, PilotConcentration pilotConcentration) {
+            name = pilotName;
+            concentration = pilotConcentration;
+            disqualified = false;
+            setCar (null);
+            results = new LinkedList <Results> ();
+            leavesNumber = 0;
+            finishedRacesNumber = 0;
         }
+
 
         /**
          * Name: getName
          * @return String
          *
-         * Returns the name of the pilot.
+         * It returns the pilot's name.
          */
-        public String getName() {
+
+        public String getName () {
             return name;
         }
 
+
         /**
          * Name: setName
-         * @param name: String
-         * Sets the given name to the pilot.
-         * The parameter "name" corresponds to the name of the pilot.
+         * @param pilotName is the pilot's new name.
+         * It sets the given name as the pilot's one.
+         *
          * This method returns nothing.
          */
-        public void setName(String name) {
-            this.name = name;
+
+        public void setName (String pilotName) {
+            name = pilotName;
         }
+
 
         /**
          * Name: getCar
          * @return Carable
          *
-         * Returns the car of the pilot.
+         * It returns the pilot's car.
          */
-        public Carable getCar() {
+
+        public Carable getCar () {
             return car;
         }
 
+
         /**
          * Name: setCar
-         * @param car: Carable
-         * Sets the given car to the pilot.
-         * The parameter "car" corresponds to the car of the pilot.
+         * @param pilotCar is the pilot's new car.
+         * It sets the given car to the pilot.
+         *
          * This method returns nothing.
          */
-        public void setCar (Carable car) {
-            this.car = car;
+
+        public void setCar (Carable pilotCar) {
+            car = pilotCar;
         }
+
 
         /**
          * Name: getConcentration
          * @return PilotConcentration
          *
-         * Returns the concentration of the pilot.
+         * it returns the pilot's concentration.
          */
-        public PilotConcentration getConcentration() {
+
+        public PilotConcentration getConcentration () {
             return concentration;
         }
 
-        /**
-         * Name: getConcentrationName
-         * @return String
-         *
-         * Returns the pilot concentration name.
-         */
-        public String getConcentrationName(){
-            return concentration.getConcentrationName();
-        }
 
         /**
          * Name: setConcentration
-         * @param concentration: PilotConcentration
-         * Sets the given concentration to the pilot.
-         * The parameter "concentration" corresponds to the concentration of the pilot.
+         * @param pilotConcentration is the pilot's new concentration.
+         * It sets the given concentration to the pilot.
+         *
          * This method returns nothing.
          */
-        public void setConcentration(PilotConcentration concentration) {
-            this.concentration = concentration;
+
+        public void setConcentration (PilotConcentration pilotConcentration) {
+            concentration = pilotConcentration;
         }
+
 
         /**
          * Name: getResults
          * @return LinkedList
          *
-         * Returns the list of the results of the pilot.
+         * It returns the list of the results of the pilot.
          */
-        public LinkedList<Results> getResults() {
+
+        public LinkedList <Results> getResults () {
             return results;
         }
 
+
         /**
          * Name: setResults
-         * @param results: LinkedList
-         * Sets the given list of results to the track.
-         * The parameter "results" corresponds to the list of results of the pilot.
+         * @param pilotResults is the new list of results.
+         * It sets the given list of results to the track.
+         *
          * This method returns nothing.
          */
-        public void setResults(LinkedList<Results> results) {
-            this.results = results;
+
+        public void setResults (LinkedList <Results> pilotResults) {
+            results = pilotResults;
         }
+
 
         /**
          * Name: isDisqualified
          * @return boolean
          *
-         * Returns if the pilot is disqualified or not.
+         * It returns whether the pilot is disqualified or not.
          */
-        public boolean isDisqualified() {
+
+        public boolean isDisqualified () {
             return disqualified;
         }
 
+
         /**
          * Name: setDisqualified
-         * @param disqualified: boolean
-         * Sets the status of disqualification to the pilot.
-         * The parameter "disqualified" corresponds to the status of the disqualification of the pilot.
+         * @param pilotDisqualified is the disqualified status.
+         * It sets the status of disqualification to the pilot.
+         *
          * This method returns nothing.
          */
-        public void setDisqualified(boolean disqualified) {
-            this.disqualified = disqualified;
+
+        public void setDisqualified (boolean pilotDisqualified) {
+            disqualified = pilotDisqualified;
         }
+
 
         /**
          * Name: getLeavesNumber
          * @return int
          *
-         * Returns the number of lefts of the pilot.
+         * It returns the number of leaves of the pilot.
          */
-        public int getLeavesNumber() {
+
+        public int getLeavesNumber () {
             return leavesNumber;
         }
 
+
         /**
          * Name: setLeavesNumber
-         * @param leavesNumber: int
-         * Sets the given number of leaves to the pilot.
-         * The parameter "leavesNumber" corresponds to the number of leaves of the pilot.
+         * @param newLeavesNumber is the new number of leaves.
+         * It sets the given number of leaves to the pilot.
+         *
          * This method returns nothing.
          */
-        public void setLeavesNumber(int leavesNumber) {
-            this.leavesNumber = leavesNumber;
+
+        public void setLeavesNumber (int newLeavesNumber) {
+            leavesNumber = newLeavesNumber;
         }
+
 
         /**
          * Name: getFinishedRacesNumber
          * @return int
          *
-         * Returns the number of finished races of the pilot.
+         * It returns the number of finished races of the pilot.
          */
-        public int getFinishedRacesNumber() {
+
+        public int getFinishedRacesNumber () {
             return finishedRacesNumber;
         }
 
+
         /**
          * Name: setFinishedRacesNumber
-         * @param finishedRacesNumber: int
-         * Sets the given number of finished races to the pilot.
-         * The parameter "finishedRacesNumber" corresponds to the number of finished races of the pilot.
+         * @param newFinishedRacesNumber is the new value of finished races.
+         * It sets the given number of finished races to the pilot.
+         *
          * This method returns nothing.
          */
-        public void setFinishedRacesNumber(int finishedRacesNumber) {
-            this.finishedRacesNumber = finishedRacesNumber;
+
+        public void setFinishedRacesNumber (int newFinishedRacesNumber) {
+            finishedRacesNumber = newFinishedRacesNumber;
         }
+
 
         /**
          * Name: addResult
-         * @param result: Results
-         * Sets the given results to the pilot.
-         * The parameter "result" corresponds to the result of the pilot.
+         * @param result is the new results
+         * It adds a new results object to the pilot's list of results.
+         *
          * This method returns nothing.
          */
-        public void addResult(Results result){
-            this.results.add(result);
+
+        public void addResult (Results result) {
+            results.add (result);
         }
+
 
         /**
          * Name: getPoints
          * @return int
          *
-         * Returns the the total points of the pilot.
+         * It returns the the total points of the pilot.
          */
+
         public int getPoints () {
             int points = 0;
             for(Results result : results){
@@ -220,52 +243,57 @@ import java.util.*;
             return points;
         }
 
+
         /**
          * Name: calculateSkill
          * @return Double
          *
          * This is a method that will be overriden in the subclasses, used to calculate the skill of a pilot.
          */
-        public abstract double calculateSkill();
+
+        public abstract double calculateSkill ();
+
 
         /**
          * Name: drive
-         * @param track: Trackable
-         * Makes a pilot drive a car in a circuit.
+         * @param track is the track where the pilot drives.
+         * It makes a pilot drive a car in a track.
+         *
          * This method returns nothing.
          */
-        public void drive(Trackable track){
-            double concentration = getConcentration().getConcentrationValue ();
+
+        public void drive (Trackable track) {
+            double concentration = getConcentration ().getConcentrationValue ();
             double time = getCar ().calculateTime (track, this);
             double fuel = getCar ().calculateRemainingFuel (track, this, time);
-            Results result0=new Results(-1.0,null);
+            Results result0 = new Results (-1.0,null);
 
             if ((concentration > time) && (getCar ().getCurrentFuel () > time)) {
                 result0.setTime (time);
                 result0.setTrack (track);
                 result0.setPoints (-1);
-                getCar().setCurrentFuel (fuel);
-                setFinishedRacesNumber(finishedRacesNumber + 1);
-                this.addResult(result0);
-                System.out.println ("+++ " + getName() + " finishes the race in " + time + " minutes +++");
+                getCar ().setCurrentFuel (fuel);
+                setFinishedRacesNumber (finishedRacesNumber + 1);
+                addResult (result0);
+                System.out.println ("+++ " + getName () + " finishes the race in " + time + " minutes +++");
             }
             else {
                 if ((concentration < time) || (getCar ().getCurrentFuel () < time)) {
                     if (concentration < getCar ().getCurrentFuel ()) {
-                        result0.setTime(Math.round((concentration-time)*100d)/100d);
-                        result0.setTrack(track);
-                        getCar().setCurrentFuel(getCar().getCurrentFuel() - concentration);
-                        this.addResult(result0);
-                        System.out.println("¡¡¡ " + getName() + " has lost their concentration when they only needed " +
+                        result0.setTime (Math.round ((concentration - time) * 100d) / 100d);
+                        result0.setTrack (track);
+                        getCar ().setCurrentFuel (getCar ().getCurrentFuel () - concentration);
+                        addResult (result0);
+                        System.out.println ("¡¡¡ " + getName () + " has lost their concentration when they only needed " +
                                 Math.round ((time - concentration) * 100d) / 100d + " more minutes to finish !!!");
-                        System.out.println("¡¡¡ They had been racing for " + concentration + " minutes when they lost their concentration !!!");
-                        setLeavesNumber(leavesNumber+1);
+                        System.out.println ("¡¡¡ They had been racing for " + concentration + " minutes when they lost their concentration !!!");
+                        setLeavesNumber (leavesNumber + 1);
                     }
                     else {
                         result0.setTime (fuel);
                         setLeavesNumber (leavesNumber + 1);
-                        result0.setTrack(track);
-                        this.addResult(result0);
+                        result0.setTrack (track);
+                        this.addResult (result0);
                         System.out.println ("¡¡¡ The " + getCar ().getCarName () + " has run out of fuel when there were only " + Math.round ((0 - fuel) * 100d) / 100d + " left to finish !!!");
                         System.out.println ("¡¡¡ When it ran out of fuel, it had been racing for " + getCar ().getCurrentFuel () + " minutes !!!");
                         getCar().setCurrentFuel (fuel);
@@ -273,34 +301,37 @@ import java.util.*;
                 }
             }
             System.out.println ("+++ The remaining fuel in the " + getCar ().getCarName () + " after the race is " + Math.round ((getCar ().getCurrentFuel ()) * 100d) / 100d + " +++");
-            System.out.println("@@@");
+            System.out.println ("@@@");
         }
+
 
         /**
          * Name: toString
          * @return String
          *
-         * Returns a String representation of the information stored in the pilot.
+         * It returns a String representation of the information stored in the pilot.
          */
+
         @Override
-        public String toString(){
-            return "<pilot: " + getName() + ">";
+        public String toString (){
+            return "<pilot: " + getName () + ">";
         }
 
-        //le pasas un circuito y te devuelve el resultado
-        //returns the track result with the name
+
         /**
          * Name: getResult
          * @return Results
-         * Returns the result of a pilot in a given track.
+         *
+         * It returns the result of a pilot in a given track.
          */
-        public Results getResult(String name){
-            boolean enc=false;
+
+        public Results getResult (String name) {
+            boolean enc = false;
             Results r = null;
-            for(int i=0; i<results.size() && !enc; i++){
-                r=results.get(i);
-                if(name==r.getTrack().getTrackName())
-                    enc=true;
+            for(int i = 0; i < (results.size ()) && (!enc); i++){
+                r = results.get (i);
+                if (name == r.getTrack ().getTrackName ())
+                    enc = true;
             }
             return r;
         }
